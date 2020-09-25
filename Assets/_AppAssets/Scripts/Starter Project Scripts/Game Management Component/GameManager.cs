@@ -89,19 +89,12 @@ public class GameManager : MonoBehaviour
     public string playerName;
     public int currentLevel;
     public CharacterGender playerGender;
-    public CharacterStack levelCharacterStack;
-    public int laneMaxCharactersNumber;
-    public float oneCharacterHeightJumpPowerUnit;
-    public List<GameObject> charactersPrefabs;
     public List<Material> maleCharactersMaterials;
-    public List<Material> femaleCharactersMaterials;
     public List<GameObject> colorChangerLinesPrefabs;
-    public List<GameObject> jumpBoostersPrefab;
-    public List<GameObject> combinationVFXsPrefabs;
+
 
     public int gold = 0, crystal = 0;
     private bool isStart, isFinished;
-    private LevelUI levelUI;
 
     [Header("Default Static Behavior")]
     public GameplayColor firstCharacterColor;
@@ -141,26 +134,7 @@ public class GameManager : MonoBehaviour
         SceneManager.sceneLoaded += delegate { OnSceneLoad(); };
     }
 
-    private void Start()
-    {
-        if (LevelUI.instance)
-        {
-            levelUI = LevelUI.instance;
-        }
-        playerGender = (CharacterGender)PlayerPrefs.GetInt(ImportantData.gender);
 
-        FB_EventsHandler.instance.LogLevels_AchievedEvent(currentLevel);
-        StartCoroutine(CheckForLevelEnd());
-        OnWin.AddListener(WinTheLevel);
-    }
-
-    private void Update()
-    {
-        if (isStart && !isFinished)
-        {
-            UpdatePlayerProgress();
-        }
-    }
 
     /// <summary>
     ///     Check which game play it is, and position the player at that position.
@@ -189,47 +163,9 @@ public class GameManager : MonoBehaviour
 
     #region Public GamePlay Methods
 
-    public GameObject GetTheVeryFirstCharacter()
-    {
-        GameObject initObj = GetCharacterPrefab(firstCharacterColor, this.playerGender);
-        initObj.GetComponent<Character>().currentCharacterColor = firstCharacterColor;
-        return initObj;
-    }
-
-    public GameObject GetCharacterPrefab(GameplayColor color, CharacterGender gender)
-    {
-        GameObject characterPrefab = null;
-        if (gender == CharacterGender.Male)
-        {
-            characterPrefab = charactersPrefabs[0];
-        }
-        else
-        {
-            characterPrefab = charactersPrefabs[1];
-        }
-
-        if (characterPrefab)
-        {
-
-            if (gender == CharacterGender.Male)
-            {
-                characterPrefab.GetComponent<Character>().meshRenderer.material = fetchMaleMaterialByName("Male_" + color.ToString());
-
-            }
-            else
-            {
-                characterPrefab.GetComponent<Character>().meshRenderer.material = fetchFemaleMaterialByName("Female_" + color.ToString());
-
-            }
-            return characterPrefab;
-        }
-        else
-        {
-            return null;
-        }
 
 
-    }
+
 
     private Material fetchMaleMaterialByName(string name)
     {
@@ -243,30 +179,8 @@ public class GameManager : MonoBehaviour
         return null;
     }
 
-    private Material fetchFemaleMaterialByName(string name)
-    {
-        foreach (Material mat in femaleCharactersMaterials)
-        {
-            if (mat.name.ToLower().Equals(name.ToLower()))
-            {
-                return mat;
-            }
-        }
-        return null;
-    }
 
-    public void changeModelToColor(Character character, GameplayColor color, CharacterGender gender)
-    {
-        if (gender == CharacterGender.Male)
-        {
-            character.meshRenderer.material = fetchMaleMaterialByName("Male_" + color.ToString());
 
-        }
-        else
-        {
-            character.meshRenderer.material = fetchFemaleMaterialByName("Female_" + color.ToString());
-        }
-    }
 
     public GameplayColor RandomizeGamePlayColor()
     {
@@ -286,26 +200,9 @@ public class GameManager : MonoBehaviour
     //    }
     //    return null;
     //}
-    public void WinTheLevel()
-    {
-        PlayerPrefs.SetInt(ImportantData.CurrentLevel, SceneManager.GetActiveScene().buildIndex + 1);
-    }
 
-    public GameObject GetCombinationVFXObject(GameplayColor color)
-    {
 
-        switch (color)
-        {
-            case GameplayColor.Red:
-                return combinationVFXsPrefabs[0];
-            case GameplayColor.Green:
-                return combinationVFXsPrefabs[1];
-            case GameplayColor.Yellow:
-                return combinationVFXsPrefabs[2];
-            default:
-                return null;
-        }
-    }
+
     #endregion
 
     #region  Gameplay States Global Methods 
@@ -497,28 +394,9 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region PlayerProgress Methods
-    public float GetPlayerProgressValue()
-    {
-        float LevelStartEndDistance = Vector3.Distance(LevelManager.Instance.LevelEndPoint.position, levelCharacterStack.transform.position);
-        float PlayerStartDistance = Vector3.Distance(levelCharacterStack.root_transform.position, levelCharacterStack.transform.position);
 
-        return (PlayerStartDistance / LevelStartEndDistance);
-    }
 
-    public void UpdatePlayerProgress()
-    {
-        float PlayerProgressValue;
-        PlayerProgressValue = GetPlayerProgressValue();
-        levelUI.SetCurrentLevelProgress(PlayerProgressValue);
-    }
 
-    public IEnumerator CheckForLevelEnd()
-    {
-        yield return new WaitUntil(() => levelUI.GetCurrentLevelProgress() >= 1);
-        OnWin.Invoke();
-        isStart = false;
-        isFinished = true;
-    }
     #endregion
 
 
