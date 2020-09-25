@@ -1,0 +1,16 @@
+{
+    "name": "SA.Android",
+    "references": [
+        "SA.Foundation",
+        "StansAssets.Foundation",
+        "SA.Android.Manifest"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": []
+}
