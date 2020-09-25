@@ -89,8 +89,7 @@ public class GameManager : MonoBehaviour
     public string playerName;
     public int currentLevel;
     public CharacterGender playerGender;
-    public List<Material> maleCharactersMaterials;
-    public List<GameObject> colorChangerLinesPrefabs;
+    public List<Material> cubesMaterials;
 
 
     public int gold = 0, crystal = 0;
@@ -165,19 +164,6 @@ public class GameManager : MonoBehaviour
 
 
 
-
-
-    private Material fetchMaleMaterialByName(string name)
-    {
-        foreach (Material mat in maleCharactersMaterials)
-        {
-            if (mat.name.ToLower().Equals(name.ToLower()))
-            {
-                return mat;
-            }
-        }
-        return null;
-    }
 
 
 
