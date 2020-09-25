@@ -6,21 +6,21 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_AppAssets/_Scenes/Production/SplashScene.unity
+    path: Assets/Old Project App Assets/CSH/Scenes/Production/SplashScene.unity
     guid: 66bcbab800977cc43b8c948d9e96966e
   - enabled: 1
-    path: Assets/_AppAssets/_Scenes/Production/Levels/Level1.unity
+    path: Assets/Old Project App Assets/CSH/Scenes/Production/Levels/Level1.unity
     guid: 909d06cd4656c8543af065c73508565d
   - enabled: 1
-    path: Assets/_AppAssets/_Scenes/Production/Levels/Level2.unity
+    path: Assets/Old Project App Assets/CSH/Scenes/Production/Levels/Level2.unity
     guid: cb4c33642593fe94a9f1b4b7a81e2569
   - enabled: 1
-    path: Assets/_AppAssets/_Scenes/Production/Levels/Level3.unity
+    path: Assets/Old Project App Assets/CSH/Scenes/Production/Levels/Level3.unity
     guid: 2f0bf3ad838736e4c9bcb18413deef3a
   - enabled: 1
-    path: Assets/_AppAssets/_Scenes/Production/Levels/Level4.unity
+    path: Assets/Old Project App Assets/CSH/Scenes/Production/Levels/Level4.unity
     guid: d14f9b69bcd689d4683931a96dc63dfb
   - enabled: 1
-    path: Assets/_AppAssets/_Scenes/Production/Levels/Level5.unity
+    path: Assets/Old Project App Assets/CSH/Scenes/Production/Levels/Level5.unity
     guid: 6834229e9c817124f8feade524b67f7e
   m_configObjects: {}
