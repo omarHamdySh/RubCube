@@ -37,7 +37,10 @@ public class HollowController : MonoBehaviour
     /// <param name="color"></param>
     public void ChangeMatColor(Color color)
     {
-        //hollowMaterial.SetColor("_OutlineColor", color);
-        hollowMaterial.color = color;
+        if (isHollow)
+        {
+            //hollowMaterial.SetColor("_OutlineColor", color);
+            hollowMaterial.color = color;
+        }
     }
 }
