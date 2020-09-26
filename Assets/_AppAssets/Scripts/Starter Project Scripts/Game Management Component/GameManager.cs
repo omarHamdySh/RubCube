@@ -36,6 +36,14 @@ public delegate bool GamePlayStatesEvents(IGameplayState otherState);
 
 public class GameManager : MonoBehaviour
 {
+    #region GamePlayStates Events
+
+    public UnityEvent OnGamePause;
+    public UnityEvent OnGameResume;
+    public UnityEvent OnGamePlay;
+
+    #endregion
+
     #region Custom inspector attributes
     public static int turnsRemaining = 3;
 
@@ -74,9 +82,6 @@ public class GameManager : MonoBehaviour
     public event TimeEvents OnRealMinuteChanged;
     public event TimeEvents OnGameHourChanged;
     public event TimeEvents OnGameDayChanged;
-
-    public GamePlayStatesEvents OnTransitionHaveToEnd;
-    public GamePlayStatesEvents OnGamePlayPause;
 
     #endregion
 
@@ -163,11 +168,6 @@ public class GameManager : MonoBehaviour
     #region Public GamePlay Methods
 
 
-
-
-
-
-
     public GameplayColor RandomizeGamePlayColor()
     {
         return (GameplayColor)UnityEngine.Random.Range(0, 3);
@@ -228,24 +228,9 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
+        gameplayFSMManager.toRunningState();
         StartLevel.Invoke();
         isStart = true;
-    }
-
-    /// <summary>
-    /// Proceed Transition which means that go to what ever game play state you were 
-    /// going before the transition.
-    /// </summary>
-    public void proceedTransition()
-    {
-        PauseState nullObj = null;
-        bool result = OnTransitionHaveToEnd(nullObj);
-
-        if (result)
-        {
-            StartCoroutine(turnOfStateFSMHit());
-        }
-
     }
 
     /// <summary>

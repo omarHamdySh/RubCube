@@ -12,6 +12,18 @@ public class Shape : Face
             row.parentFace = this;
             row.Init();
         }
-        RubixCube.applyPatternReverse(this);
+        applyPattern();
+    }
+
+    public override void applyPattern()
+    {
+        bool[,] cells = patternTypeGrid.GetCells();
+        for (int i = 0; i < patternTypeGrid.GridSize.x; i++)
+        {
+            for (int j = 0; j < patternTypeGrid.GridSize.y; j++)
+            {
+                rows[i].faceBlockContainers[j].gameObject.SetActive(!cells[i, j]);
+            }
+        }
     }
 }
