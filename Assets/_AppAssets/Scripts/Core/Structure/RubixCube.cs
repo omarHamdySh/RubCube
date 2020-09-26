@@ -12,7 +12,9 @@ public class RubixCube : MonoBehaviour
     {
         None,
         TShape,
-        IShape
+        IShape,
+        TShapeInverse,
+        IShapeInverse
     }
 
     #endregion
@@ -22,6 +24,7 @@ public class RubixCube : MonoBehaviour
     public List<Face> faces;
     public GameObject core;
     public UnityEvent OnCubeTwist;
+    public Face currentUpFace;
     public float rotateDuration;
 
     #endregion
@@ -33,8 +36,12 @@ public class RubixCube : MonoBehaviour
     #endregion
 
     #region MonoBehaviours
-
+    private void Start()
+    {
+        Init();
+    }
     #endregion
+
 
     #region Public Methods
 
@@ -49,8 +56,7 @@ public class RubixCube : MonoBehaviour
         foreach (Face face in faces)
         {
             face.parentCube = this;
-            face.Init();
-            OnCubeTwist.AddListener(face.updateFaceDirection);
+            (face).Init();
         }
     }
 
@@ -97,6 +103,11 @@ public class RubixCube : MonoBehaviour
     public void OnTwistComplete()
     {
         isRotating = false;
+        foreach (var face in faces)
+        {
+            face.updateFaceDirection();
+        }
+
         OnCubeTwist.Invoke();
     }
 
@@ -111,7 +122,7 @@ public class RubixCube : MonoBehaviour
         }
     }
 
-    public void applyPattern(Face face)
+    public static void applyPattern(Face face)
     {
         bool[] row1States = { true, true, true };
         bool[] row2States = { true, true, true };
@@ -129,7 +140,16 @@ public class RubixCube : MonoBehaviour
             case FacePatternType.IShape:
                 row2States[0] = false; row2States[2] = false;
                 break;
-
+            case FacePatternType.TShapeInverse:
+                row1States[0] = false; row1States[1] = false; row1States[2] = false;
+                row2States[1] = false;
+                row3States[1] = false;
+                break;
+            case FacePatternType.IShapeInverse:
+                row1States[0] = false; row1States[1] = false; row1States[2] = false;
+                row2States[1] = false;
+                row3States[0] = false; row3States[1] = false; row3States[2] = false;
+                break;
             default:
                 break;
         }
@@ -138,6 +158,50 @@ public class RubixCube : MonoBehaviour
 
     }
 
+    public static void applyPatternReverse(Face face)
+    {
+        bool[] row1States = { false, false, false };
+        bool[] row2States = { false, false, false };
+        bool[] row3States = { false, false, false };
+
+        switch (face.patternType)
+        {
+            case FacePatternType.None:
+
+                break;
+            case FacePatternType.TShape:
+                row2States[0] = true; row2States[2] = true;
+                row3States[0] = true; row3States[2] = true;
+                break;
+            case FacePatternType.IShape:
+                row2States[0] = true; row2States[2] = true;
+                break;
+            case FacePatternType.TShapeInverse:
+                row1States[0] = true; row1States[1] = true; row1States[2] = true;
+                row2States[1] = true;
+                row3States[1] = true;
+                break;
+            case FacePatternType.IShapeInverse:
+                row1States[0] = true; row1States[1] = true; row1States[2] = true;
+                row2States[1] = true;
+                row3States[0] = true; row3States[1] = true; row3States[2] = true;
+                break;
+            default:
+                break;
+        }
+
+        face.reflectPattern(row1States, row2States, row3States);
+
+    }
+
+    [ContextMenu("Reset Cube")]
+    public void reset()
+    {
+        foreach (var face in faces)
+        {
+            face.reset();
+        }
+    }
     #endregion
 
     #region Private Methods
