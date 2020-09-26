@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Vibration/v.unity
-    guid: 903c05fe094553a41bc920175ab28eaa
+    path: Assets/_AppAssets/_Scenes/Production/MainMenu.unity
+    guid: c936fbf76f50efb4cae9f1fe1e30688e
   m_configObjects: {}
