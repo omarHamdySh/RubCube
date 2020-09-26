@@ -45,7 +45,7 @@ public class RubixCube : MonoBehaviour
     #region MonoBehaviours
     private void Start()
     {
-        //Init();
+        OnPatternFillEnd.AddListener(removeCurrentUpFaceHighlights);
     }
     #endregion
 
@@ -65,7 +65,7 @@ public class RubixCube : MonoBehaviour
         for (int i = 0; i < 6; i++)
         {
             List<Array2DBool> tempList = new List<Array2DBool>(allPatternsTypes);
-            var pattern = tempList[UnityEngine.Random.Range(0, tempList.Count-1)];
+            var pattern = tempList[UnityEngine.Random.Range(0, tempList.Count - 1)];
             tempList.Remove(pattern);
             facePatternsTypes.Add(pattern);
             faces[i].patternTypeGrid = pattern;
@@ -77,7 +77,7 @@ public class RubixCube : MonoBehaviour
         {
             face.parentCube = this;
             (face).Init();
-            OnPatternFillEnd.AddListener(face.OnPatternFillEnd);
+            //OnPatternFillEnd.AddListener(face.OnPatternFillEnd);
 
         }
     }
@@ -145,7 +145,7 @@ public class RubixCube : MonoBehaviour
     }
 
     #region Deprecated Logic
-    
+
     public static void applyPattern(Face face)
     {
         //bool[] row1States = { true, true, true };
@@ -183,37 +183,37 @@ public class RubixCube : MonoBehaviour
     }
     public static void applyPatternReverse(Face face)
     {
-            //bool[] row1States = { false, false, false };
-            //bool[] row2States = { false, false, false };
-            //bool[] row3States = { false, false, false };
+        //bool[] row1States = { false, false, false };
+        //bool[] row2States = { false, false, false };
+        //bool[] row3States = { false, false, false };
 
-            //switch (face.patternType)
-            //{
-            //    case FacePatternType.None:
+        //switch (face.patternType)
+        //{
+        //    case FacePatternType.None:
 
-            //        break;
-            //    case FacePatternType.TShape:
-            //        row2States[0] = true; row2States[2] = true;
-            //        row3States[0] = true; row3States[2] = true;
-            //        break;
-            //    case FacePatternType.IShape:
-            //        row2States[0] = true; row2States[2] = true;
-            //        break;
-            //    case FacePatternType.TShapeInverse:
-            //        row1States[0] = true; row1States[1] = true; row1States[2] = true;
-            //        row2States[1] = true;
-            //        row3States[1] = true;
-            //        break;
-            //    case FacePatternType.IShapeInverse:
-            //        row1States[0] = true; row1States[1] = true; row1States[2] = true;
-            //        row2States[1] = true;
-            //        row3States[0] = true; row3States[1] = true; row3States[2] = true;
-            //        break;
-            //    default:
-            //        break;
-            //}
+        //        break;
+        //    case FacePatternType.TShape:
+        //        row2States[0] = true; row2States[2] = true;
+        //        row3States[0] = true; row3States[2] = true;
+        //        break;
+        //    case FacePatternType.IShape:
+        //        row2States[0] = true; row2States[2] = true;
+        //        break;
+        //    case FacePatternType.TShapeInverse:
+        //        row1States[0] = true; row1States[1] = true; row1States[2] = true;
+        //        row2States[1] = true;
+        //        row3States[1] = true;
+        //        break;
+        //    case FacePatternType.IShapeInverse:
+        //        row1States[0] = true; row1States[1] = true; row1States[2] = true;
+        //        row2States[1] = true;
+        //        row3States[0] = true; row3States[1] = true; row3States[2] = true;
+        //        break;
+        //    default:
+        //        break;
+        //}
 
-            //face.applyPattern(row1States, row2States, row3States);
+        //face.applyPattern(row1States, row2States, row3States);
 
     }
 
@@ -223,11 +223,16 @@ public class RubixCube : MonoBehaviour
     [ContextMenu("Reset Cube")]
     public void reset()
     {
-        facePatternsTypes = new List<Array2DBool>();
         foreach (var face in faces)
         {
             face.reset();
         }
+        facePatternsTypes = new List<Array2DBool>();
+    }
+
+    public void removeCurrentUpFaceHighlights()
+    {
+        currentUpFace.OnPatternFillEnd();
     }
 
     #endregion
