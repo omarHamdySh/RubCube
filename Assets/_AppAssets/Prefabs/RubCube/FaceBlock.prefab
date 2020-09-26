@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1696955552808142094}
   - component: {fileID: 8459260419361855808}
   - component: {fileID: 4001547101081261033}
+  - component: {fileID: 7095345114939609716}
   m_Layer: 0
   m_Name: FaceBlock
   m_TagString: Untagged
@@ -107,3 +108,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   faceBlockContainer: {fileID: 0}
+--- !u!114 &7095345114939609716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4411211095108913538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efefd090da504934e9907b442183b213, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colors: []
+  speed: 1
+  PaletNumber: 0
