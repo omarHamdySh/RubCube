@@ -24,6 +24,7 @@ public class RubixCube : MonoBehaviour
     public List<Face> faces;
     public GameObject core;
     public UnityEvent OnCubeTwist;
+    public UnityEvent OnPatternFillEnd;
     public Face currentUpFace;
     public float rotateDuration;
 

@@ -12,6 +12,7 @@ TagManager:
   - EndLine
   - TreasureBox
   - UncollectedPlayer
+  - Shape
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Face
   - 
   - 
   - 
