@@ -32,6 +32,7 @@ public class SwipeControl : MonoBehaviour
 
         // Random the first shape angle
         transform.rotation = Quaternion.AngleAxis(Rotations[Random.Range(0, Rotations.Length)], Random_Dir[Random.Range(0, Random_Dir.Length)]);
+        OnRotationEnd.Invoke();
     }
 
     private void OnEnable()

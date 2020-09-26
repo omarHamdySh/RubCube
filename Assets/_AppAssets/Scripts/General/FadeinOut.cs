@@ -10,13 +10,9 @@ public class FadeinOut : MonoBehaviour
     {
         ren = GetComponent<Renderer> ();
         ren.sharedMaterial.color = FadeColor;
-        ren.sharedMaterial.DOFade (0.4f, "_TintColor", 0.5f).SetLoops (-1, LoopType.Yoyo).From (.1f);
+        ren.sharedMaterial.DOFade (0.2f, "_TintColor", 0.5f).SetLoops (-1, LoopType.Yoyo).From (.05f);
 
     }
 
-    // Update is called once per frame
-    void Update ()
-    {
 
-    }
 }

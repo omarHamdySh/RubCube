@@ -163,7 +163,9 @@ public class Face : MonoBehaviour
 
     public void OnPatternFillEnd()
     {
-        foreach (var cubeObj in indicatorsPrefabsObjects)
+        FadeinOut[] indicators = GetComponentsInChildren<FadeinOut>();
+       
+        foreach (var cubeObj in indicators)
         {
             Destroy(cubeObj.gameObject);
         }
