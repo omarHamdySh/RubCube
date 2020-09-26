@@ -113,6 +113,19 @@ public class Face : MonoBehaviour
 
     #endregion
 
+    #region MonoBehaviors
+
+    public void OnTriggerEnter (Collider other)
+    {
+        if (other.gameObject.tag == "Shape")
+        {
+            parentCube.OnPatternFillEnd.Invoke ();
+            other.GetComponent<Collider> ().enabled = false;
+        }
+    }
+
+    #endregion
+
     #region private methods
 
     public void getFaceDirection ()
