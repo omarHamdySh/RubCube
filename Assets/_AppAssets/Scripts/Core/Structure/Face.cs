@@ -15,7 +15,6 @@ public class Face : MonoBehaviour
         right
     }
 
-    public GameObject IndecatorCube;
     #endregion
 
     #region Public  DataMembers
@@ -30,21 +29,21 @@ public class Face : MonoBehaviour
 
     #region Public Methods
 
-    [ContextMenu ("Initialize")]
-    public virtual void Init ()
+    [ContextMenu("Initialize")]
+    public virtual void Init()
     {
         foreach (var row in rows)
         {
             row.parentFace = this;
-            row.Init ();
+            row.Init();
         }
 
-        RubixCube.applyPattern (this);
-        updateFaceDirection ();
+        RubixCube.applyPattern(this);
+        updateFaceDirection();
     }
-    public void updateFaceDirection ()
+    public void updateFaceDirection()
     {
-        getFaceDirection ();
+        getFaceDirection();
 
         if (faceDirection == Direction.up && parentCube)
         {
@@ -52,64 +51,68 @@ public class Face : MonoBehaviour
         }
     }
 
-    [ContextMenu ("Init Prefab")]
-    public void prefabInit ()
+    [ContextMenu("Init Prefab")]
+    public void prefabInit()
     {
-        FaceBlocksRow [] fetchedRows = GetComponentsInChildren<FaceBlocksRow> ();
+        FaceBlocksRow[] fetchedRows = GetComponentsInChildren<FaceBlocksRow>();
 
         foreach (var row in fetchedRows)
         {
             if (row.isPatternBased)
             {
-                rows.Add (row);
+                rows.Add(row);
             }
         }
     }
 
-    public void reflectPattern (bool [] raw1States, bool [] raw2States, bool [] raw3States)
+    public void reflectPattern(bool[] raw1States, bool[] raw2States, bool[] raw3States)
     {
-        rows [0].faceBlockContainers [0].gameObject.SetActive (raw1States [0]);
-        rows [0].faceBlockContainers [1].gameObject.SetActive (raw1States [1]);
-        rows [0].faceBlockContainers [2].gameObject.SetActive (raw1States [2]);
+        rows[0].faceBlockContainers[0].gameObject.SetActive(raw1States[0]);
+        rows[0].faceBlockContainers[1].gameObject.SetActive(raw1States[1]);
+        rows[0].faceBlockContainers[2].gameObject.SetActive(raw1States[2]);
 
-        rows [1].faceBlockContainers [0].gameObject.SetActive (raw2States [0]);
-        rows [1].faceBlockContainers [1].gameObject.SetActive (raw2States [1]);
-        rows [1].faceBlockContainers [2].gameObject.SetActive (raw2States [2]);
+        rows[1].faceBlockContainers[0].gameObject.SetActive(raw2States[0]);
+        rows[1].faceBlockContainers[1].gameObject.SetActive(raw2States[1]);
+        rows[1].faceBlockContainers[2].gameObject.SetActive(raw2States[2]);
 
-        rows [2].faceBlockContainers [0].gameObject.SetActive (raw3States [0]);
-        rows [2].faceBlockContainers [1].gameObject.SetActive (raw3States [1]);
-        rows [2].faceBlockContainers [2].gameObject.SetActive (raw3States [2]);
+        rows[2].faceBlockContainers[0].gameObject.SetActive(raw3States[0]);
+        rows[2].faceBlockContainers[1].gameObject.SetActive(raw3States[1]);
+        rows[2].faceBlockContainers[2].gameObject.SetActive(raw3States[2]);
 
         for (int i = 0; i < raw1States.Length; i++)
         {
-            if (raw1States [i] == false)
+            if (raw1States[i] == false)
             {
                 //Assign color to FadeinOut.cs -> Color
-               var emptyCube = Instantiate (IndecatorCube, rows [0].faceBlockContainers [i].transform.position, Quaternion.identity);
+                var emptyCube = Instantiate(parentCube.IndecatorCube, rows[0].faceBlockContainers[i].transform.position, Quaternion.identity);
+                emptyCube.GetComponent<FadeinOut>().FadeColor = parentCube.color_Swap_Manager.indicatorColor;
             }
-            if (raw2States [i] == false)
+            if (raw2States[i] == false)
             {
                 //Assign color to FadeinOut.cs -> Color
-                Instantiate(IndecatorCube, rows [1].faceBlockContainers [i].transform.position, Quaternion.identity);
+                var emptyCube = Instantiate(parentCube.IndecatorCube, rows[1].faceBlockContainers[i].transform.position, Quaternion.identity);
+                emptyCube.GetComponent<FadeinOut>().FadeColor = parentCube.color_Swap_Manager.indicatorColor;
+
             }
-            if (raw3States [i] == false)
+            if (raw3States[i] == false)
             {
                 //Assign color to FadeinOut.cs -> Color
-                Instantiate(IndecatorCube, rows [2].faceBlockContainers [i].transform.position, Quaternion.identity);
+                var emptyCube = Instantiate(parentCube.IndecatorCube, rows[2].faceBlockContainers[i].transform.position, Quaternion.identity);
+                emptyCube.GetComponent<FadeinOut>().FadeColor = parentCube.color_Swap_Manager.indicatorColor;
             }
 
         }
 
     }
 
-    [ContextMenu ("Reset To None Pattern")]
-    public void reset ()
+    [ContextMenu("Reset To None Pattern")]
+    public void reset()
     {
         foreach (var row in rows)
         {
             foreach (var faceBlockContainer in row.faceBlockContainers)
             {
-                faceBlockContainer.gameObject.SetActive (true);
+                faceBlockContainer.gameObject.SetActive(true);
             }
         }
     }
@@ -118,12 +121,12 @@ public class Face : MonoBehaviour
 
     #region MonoBehaviors
 
-    public void OnTriggerEnter (Collider other)
+    public void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Shape")
         {
-            parentCube.OnPatternFillEnd.Invoke ();
-            other.GetComponent<Collider> ().enabled = false;
+            parentCube.OnPatternFillEnd.Invoke();
+            other.GetComponent<Collider>().enabled = false;
         }
     }
 
@@ -131,29 +134,29 @@ public class Face : MonoBehaviour
 
     #region private methods
 
-    public void getFaceDirection ()
+    public void getFaceDirection()
     {
-        if (Vector3.Dot ((parentCube.core.transform.position - this.faceCollider.bounds.center).normalized, Vector3.up.normalized) > 0.8f)
+        if (Vector3.Dot((parentCube.core.transform.position - this.faceCollider.bounds.center).normalized, Vector3.up.normalized) > 0.8f)
         {
             faceDirection = Direction.down;
         }
-        else if (Vector3.Dot ((parentCube.core.transform.position - this.faceCollider.bounds.center), Vector3.down.normalized) > 0.8f)
+        else if (Vector3.Dot((parentCube.core.transform.position - this.faceCollider.bounds.center), Vector3.down.normalized) > 0.8f)
         {
             faceDirection = Direction.up;
         }
-        else if (Vector3.Dot ((parentCube.core.transform.position - this.faceCollider.bounds.center).normalized, Vector3.right.normalized) > 0.8f)
+        else if (Vector3.Dot((parentCube.core.transform.position - this.faceCollider.bounds.center).normalized, Vector3.right.normalized) > 0.8f)
         {
             faceDirection = Direction.left;
         }
-        else if (Vector3.Dot ((parentCube.core.transform.position - this.faceCollider.bounds.center).normalized, Vector3.left.normalized) > 0.8f)
+        else if (Vector3.Dot((parentCube.core.transform.position - this.faceCollider.bounds.center).normalized, Vector3.left.normalized) > 0.8f)
         {
             faceDirection = Direction.right;
         }
-        else if (Vector3.Dot ((parentCube.core.transform.position - this.faceCollider.bounds.center).normalized, Vector3.forward.normalized) > 0.8f)
+        else if (Vector3.Dot((parentCube.core.transform.position - this.faceCollider.bounds.center).normalized, Vector3.forward.normalized) > 0.8f)
         {
             faceDirection = Direction.backward;
         }
-        else if (Vector3.Dot ((parentCube.core.transform.position - this.faceCollider.bounds.center).normalized, Vector3.back.normalized) > 0.8f)
+        else if (Vector3.Dot((parentCube.core.transform.position - this.faceCollider.bounds.center).normalized, Vector3.back.normalized) > 0.8f)
         {
             faceDirection = Direction.forward;
         }

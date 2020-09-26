@@ -5,7 +5,7 @@ using UnityEngine;
 public class Color_Swap_Manager : MonoBehaviour
 {
     public static Color_Swap_Manager inst;
-    public Color ShapeIndecatore;
+    public Color indicatorColor;
     public List<Color_Palet> Color_Paltes = new List<Color_Palet> ();
     void Awake ()
     {
