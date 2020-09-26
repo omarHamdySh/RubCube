@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using DG.Tweening;
+using System;
 
 public class RubixCube : MonoBehaviour
 {
@@ -30,6 +31,8 @@ public class RubixCube : MonoBehaviour
     public float rotateDuration;
     public GameObject IndecatorCube;
 
+    public List<FacePatternType> allEnumTypes;
+    public List<FacePatternType> facePatternsTypes;
     #endregion
 
     #region  Private Data Memebers
@@ -51,15 +54,37 @@ public class RubixCube : MonoBehaviour
     [ContextMenu("Initialize Cube")]
     public void Init()
     {
+        InitializeAllEnumTypes();
+        RandomizePatterns();
         InitiFaces();
     }
 
+    public void InitializeAllEnumTypes()
+    {
+        for (int i = 0; i < Enum.GetNames(typeof(FacePatternType)).Length; i++)
+        {
+            allEnumTypes.Add((FacePatternType)(i));
+        }
+    }
+    public void RandomizePatterns()
+    {
+        //Randomize and apply patterns for the 6 faces
+        for (int i = 0; i < 6; i++)
+        {
+            FacePatternType type = (FacePatternType) UnityEngine.Random.Range(0, allEnumTypes.Count);
+            allEnumTypes.Remove(type);
+            faces[i].patternType = type;
+            facePatternsTypes.Add(type);
+        }
+    }
     public void InitiFaces()
     {
         foreach (Face face in faces)
         {
             face.parentCube = this;
             (face).Init();
+            OnPatternFillEnd.AddListener(face.OnPatternFillEnd);
+
         }
     }
 
@@ -205,6 +230,7 @@ public class RubixCube : MonoBehaviour
             face.reset();
         }
     }
+
     #endregion
 
     #region Private Methods

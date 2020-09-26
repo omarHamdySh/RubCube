@@ -25,6 +25,8 @@ public class Face : MonoBehaviour
     public Collider faceCollider;
 
     public List<FaceBlocksRow> rows;
+    public List<GameObject> indicatorsPrefabsObjects;
+
     #endregion
 
     #region Public Methods
@@ -84,21 +86,23 @@ public class Face : MonoBehaviour
             if (raw1States[i] == false)
             {
                 //Assign color to FadeinOut.cs -> Color
-                var emptyCube = Instantiate(parentCube.IndecatorCube, rows[0].faceBlockContainers[i].transform.position, Quaternion.identity);
-                emptyCube.GetComponent<FadeinOut>().FadeColor = parentCube.color_Swap_Manager.indicatorColor;
+                var emptyIndicatorCube = Instantiate(parentCube.IndecatorCube, rows[0].faceBlockContainers[i].transform.position, Quaternion.identity, transform);
+                emptyIndicatorCube.GetComponent<FadeinOut>().FadeColor = parentCube.color_Swap_Manager.indicatorColor;
+                indicatorsPrefabsObjects.Add(emptyIndicatorCube);
             }
             if (raw2States[i] == false)
             {
                 //Assign color to FadeinOut.cs -> Color
-                var emptyCube = Instantiate(parentCube.IndecatorCube, rows[1].faceBlockContainers[i].transform.position, Quaternion.identity);
-                emptyCube.GetComponent<FadeinOut>().FadeColor = parentCube.color_Swap_Manager.indicatorColor;
-
+                var emptyIndicatorCube = Instantiate(parentCube.IndecatorCube, rows[1].faceBlockContainers[i].transform.position, Quaternion.identity, transform);
+                emptyIndicatorCube.GetComponent<FadeinOut>().FadeColor = parentCube.color_Swap_Manager.indicatorColor;
+                indicatorsPrefabsObjects.Add(emptyIndicatorCube);
             }
             if (raw3States[i] == false)
             {
                 //Assign color to FadeinOut.cs -> Color
-                var emptyCube = Instantiate(parentCube.IndecatorCube, rows[2].faceBlockContainers[i].transform.position, Quaternion.identity);
-                emptyCube.GetComponent<FadeinOut>().FadeColor = parentCube.color_Swap_Manager.indicatorColor;
+                var emptyIndicatorCube = Instantiate(parentCube.IndecatorCube, rows[2].faceBlockContainers[i].transform.position, Quaternion.identity, transform);
+                emptyIndicatorCube.GetComponent<FadeinOut>().FadeColor = parentCube.color_Swap_Manager.indicatorColor;
+                indicatorsPrefabsObjects.Add(emptyIndicatorCube);
             }
 
         }
@@ -120,7 +124,6 @@ public class Face : MonoBehaviour
     #endregion
 
     #region MonoBehaviors
-
     public void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Shape")
@@ -162,6 +165,14 @@ public class Face : MonoBehaviour
         }
     }
 
+
+    public void OnPatternFillEnd()
+    {
+        foreach (var cubeObj in indicatorsPrefabsObjects)
+        {
+            Destroy(cubeObj.gameObject);
+        }
+    }
     #endregion
 
 }

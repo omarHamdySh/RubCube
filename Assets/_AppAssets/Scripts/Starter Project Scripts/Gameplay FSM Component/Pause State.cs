@@ -17,11 +17,11 @@ public class PauseState : IGameplayState
     public void OnStateEnter()
     {
         //pause the game        
-        GameManager.Instance.PauseGame();
+        GameManager.Instance.OnGamePause.Invoke();
     }
     public void OnStateExit()
     {
-        GameManager.Instance.ResumeGame();
+        GameManager.Instance.OnGameResume.Invoke();
     }
 
     public void OnStateUpdate()
