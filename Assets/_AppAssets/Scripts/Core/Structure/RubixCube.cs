@@ -26,6 +26,7 @@ public class RubixCube : MonoBehaviour
     public UnityEvent OnCubeTwist;
     public UnityEvent OnPatternFillEnd;
     public Face currentUpFace;
+    public Color_Swap_Manager color_Swap_Manager;
     public float rotateDuration;
 
     #endregion
