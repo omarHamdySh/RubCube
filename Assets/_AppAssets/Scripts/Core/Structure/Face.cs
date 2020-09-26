@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Array2DEditor;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,7 +22,7 @@ public class Face : MonoBehaviour
 
     public RubixCube parentCube; //Parent Type Object
     public Direction faceDirection;
-    public RubixCube.FacePatternType patternType;
+    public Array2DBool patternTypeGrid;
     public Collider faceCollider;
 
     public List<FaceBlocksRow> rows;
@@ -40,7 +41,7 @@ public class Face : MonoBehaviour
             row.Init();
         }
 
-        RubixCube.applyPattern(this);
+        applyPattern();
         updateFaceDirection();
     }
     public void updateFaceDirection()
@@ -67,44 +68,26 @@ public class Face : MonoBehaviour
         }
     }
 
-    public void reflectPattern(bool[] raw1States, bool[] raw2States, bool[] raw3States)
+    public virtual void applyPattern()
     {
-        rows[0].faceBlockContainers[0].gameObject.SetActive(raw1States[0]);
-        rows[0].faceBlockContainers[1].gameObject.SetActive(raw1States[1]);
-        rows[0].faceBlockContainers[2].gameObject.SetActive(raw1States[2]);
-
-        rows[1].faceBlockContainers[0].gameObject.SetActive(raw2States[0]);
-        rows[1].faceBlockContainers[1].gameObject.SetActive(raw2States[1]);
-        rows[1].faceBlockContainers[2].gameObject.SetActive(raw2States[2]);
-
-        rows[2].faceBlockContainers[0].gameObject.SetActive(raw3States[0]);
-        rows[2].faceBlockContainers[1].gameObject.SetActive(raw3States[1]);
-        rows[2].faceBlockContainers[2].gameObject.SetActive(raw3States[2]);
-
-        for (int i = 0; i < raw1States.Length; i++)
+        bool[,] cells = patternTypeGrid.GetCells();
+        for (int i = 0; i < patternTypeGrid.GridSize.x; i++)
         {
-            if (raw1States[i] == false)
+            for (int j = 0; j < patternTypeGrid.GridSize.y; j++)
             {
-                //Assign color to FadeinOut.cs -> Color
-                var emptyIndicatorCube = Instantiate(parentCube.IndecatorCube, rows[0].faceBlockContainers[i].transform.position, Quaternion.identity, transform);
-                emptyIndicatorCube.GetComponent<FadeinOut>().FadeColor = parentCube.color_Swap_Manager.indicatorColor;
-                indicatorsPrefabsObjects.Add(emptyIndicatorCube);
-            }
-            if (raw2States[i] == false)
-            {
-                //Assign color to FadeinOut.cs -> Color
-                var emptyIndicatorCube = Instantiate(parentCube.IndecatorCube, rows[1].faceBlockContainers[i].transform.position, Quaternion.identity, transform);
-                emptyIndicatorCube.GetComponent<FadeinOut>().FadeColor = parentCube.color_Swap_Manager.indicatorColor;
-                indicatorsPrefabsObjects.Add(emptyIndicatorCube);
-            }
-            if (raw3States[i] == false)
-            {
-                //Assign color to FadeinOut.cs -> Color
-                var emptyIndicatorCube = Instantiate(parentCube.IndecatorCube, rows[2].faceBlockContainers[i].transform.position, Quaternion.identity, transform);
-                emptyIndicatorCube.GetComponent<FadeinOut>().FadeColor = parentCube.color_Swap_Manager.indicatorColor;
-                indicatorsPrefabsObjects.Add(emptyIndicatorCube);
-            }
+                rows[i].faceBlockContainers[j].gameObject.SetActive(cells[i, j]);
 
+                if (!cells[i, j])
+                {
+                    if (parentCube)
+                    {
+                        //Assign color to FadeinOut.cs -> Color
+                        var emptyIndicatorCube = Instantiate(parentCube.IndecatorCube, rows[i].faceBlockContainers[j].transform.position, Quaternion.identity, transform);
+                        emptyIndicatorCube.GetComponent<FadeinOut>().FadeColor = parentCube.color_Swap_Manager.indicatorColor;
+                        indicatorsPrefabsObjects.Add(emptyIndicatorCube);
+                    }
+                }
+            }
         }
 
     }
@@ -118,6 +101,15 @@ public class Face : MonoBehaviour
             {
                 faceBlockContainer.gameObject.SetActive(true);
             }
+        }
+
+        foreach (var obj in indicatorsPrefabsObjects)
+        {
+#if UNITY_EDITOR
+            DestroyImmediate(obj.gameObject);
+#else
+                Destroy(obj.gameObject);
+#endif
         }
     }
 
@@ -139,29 +131,32 @@ public class Face : MonoBehaviour
 
     public void getFaceDirection()
     {
-        if (Vector3.Dot((parentCube.core.transform.position - this.faceCollider.bounds.center).normalized, Vector3.up.normalized) > 0.8f)
+        if (parentCube)
         {
-            faceDirection = Direction.down;
-        }
-        else if (Vector3.Dot((parentCube.core.transform.position - this.faceCollider.bounds.center), Vector3.down.normalized) > 0.8f)
-        {
-            faceDirection = Direction.up;
-        }
-        else if (Vector3.Dot((parentCube.core.transform.position - this.faceCollider.bounds.center).normalized, Vector3.right.normalized) > 0.8f)
-        {
-            faceDirection = Direction.left;
-        }
-        else if (Vector3.Dot((parentCube.core.transform.position - this.faceCollider.bounds.center).normalized, Vector3.left.normalized) > 0.8f)
-        {
-            faceDirection = Direction.right;
-        }
-        else if (Vector3.Dot((parentCube.core.transform.position - this.faceCollider.bounds.center).normalized, Vector3.forward.normalized) > 0.8f)
-        {
-            faceDirection = Direction.backward;
-        }
-        else if (Vector3.Dot((parentCube.core.transform.position - this.faceCollider.bounds.center).normalized, Vector3.back.normalized) > 0.8f)
-        {
-            faceDirection = Direction.forward;
+            if (Vector3.Dot((parentCube.core.transform.position - this.faceCollider.bounds.center).normalized, Vector3.up.normalized) > 0.8f)
+            {
+                faceDirection = Direction.down;
+            }
+            else if (Vector3.Dot((parentCube.core.transform.position - this.faceCollider.bounds.center), Vector3.down.normalized) > 0.8f)
+            {
+                faceDirection = Direction.up;
+            }
+            else if (Vector3.Dot((parentCube.core.transform.position - this.faceCollider.bounds.center).normalized, Vector3.right.normalized) > 0.8f)
+            {
+                faceDirection = Direction.left;
+            }
+            else if (Vector3.Dot((parentCube.core.transform.position - this.faceCollider.bounds.center).normalized, Vector3.left.normalized) > 0.8f)
+            {
+                faceDirection = Direction.right;
+            }
+            else if (Vector3.Dot((parentCube.core.transform.position - this.faceCollider.bounds.center).normalized, Vector3.forward.normalized) > 0.8f)
+            {
+                faceDirection = Direction.backward;
+            }
+            else if (Vector3.Dot((parentCube.core.transform.position - this.faceCollider.bounds.center).normalized, Vector3.back.normalized) > 0.8f)
+            {
+                faceDirection = Direction.forward;
+            }
         }
     }
 

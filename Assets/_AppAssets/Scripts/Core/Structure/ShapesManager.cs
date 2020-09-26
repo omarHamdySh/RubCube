@@ -19,18 +19,23 @@ public class ShapesManager : MonoBehaviour
     public UnityEvent OnDoesntMatch;
     public UnityEvent OnShapePopualationEnd;
 
+    [ContextMenu("Initialize")]
     public void Init()
     {
-
         foreach (var facePatternType in rubixCube.facePatternsTypes)
         {
             var shapeObj = Instantiate(shapePrefab, transform.position, Quaternion.identity, transform);
             shapeObj.transform.Rotate(Vector3.up, randomizeRotation());
             var shape = shapeObj.GetComponent<Shape>();
             shapes.Add(shape);
-            shape.patternType = facePatternType;
+            shape.patternTypeGrid = facePatternType;
             shape.Init();
+            shapeObj.SetActive(false);
         }
+        currentShape = shapes[0];
+        currentShape.gameObject.SetActive(true);
+        shapes.RemoveAt(0);
+        
     }
 
     public void compareShapeAndCurrenUpFace()
@@ -46,7 +51,7 @@ public class ShapesManager : MonoBehaviour
 
         if (currentShape != null)
         {
-            if (rubixCube.currentUpFace.patternType == currentShape.patternType)
+            if (rubixCube.currentUpFace.patternTypeGrid == currentShape.patternTypeGrid)
             {
                 Vector3 shapeDirection = (currentShape.transform.forward - currentShape.faceCollider.bounds.center).normalized;
                 Vector3 currentUpFaceDirection = (rubixCube.currentUpFace.transform.forward - rubixCube.currentUpFace.faceCollider.bounds.center).normalized;
@@ -99,5 +104,21 @@ public class ShapesManager : MonoBehaviour
             default:
                 return 360;
         }
+    }
+
+    [ContextMenu("Reset")]
+    public void reset()
+    {
+
+        foreach (var shape in shapes)
+        {
+#if UNITY_EDITOR
+            DestroyImmediate(shape.gameObject);
+#else
+                Destroy(shape.gameObject);
+#endif
+        }
+
+        shapes = new List<Shape>();
     }
 }
