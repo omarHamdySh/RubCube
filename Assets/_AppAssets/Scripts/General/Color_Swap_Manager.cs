@@ -5,9 +5,7 @@ using UnityEngine;
 public class Color_Swap_Manager : MonoBehaviour
 {
     public static Color_Swap_Manager inst;
-
-    // List<Gradient> Color_Paltes = new List<Gradient> ();
-
+    public Color ShapeIndecatore;
     public List<Color_Palet> Color_Paltes = new List<Color_Palet> ();
     void Awake ()
     {
@@ -20,9 +18,11 @@ public class Color_Swap_Manager : MonoBehaviour
 
     }
 
-    [System.Serializable]
-    public class Color_Palet
-    {
-        List<Gradient> Color_Paltes = new List<Gradient> ();
-    }
+}
+
+[System.Serializable]
+public class Color_Palet
+{
+    [SerializeField]
+    public List<Gradient> Color_Paltes = new List<Gradient> ();
 }
