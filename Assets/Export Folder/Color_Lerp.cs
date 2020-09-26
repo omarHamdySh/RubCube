@@ -16,7 +16,7 @@ public class Color_Lerp : MonoBehaviour
 	void Start ()
 	{
 		_faceblock = GetComponent<FaceBlock> ();
-		Palet = _faceblock.faceBlockContainer.parentFaceBlocksRow.parentFace.parentCube.color_Swap_Manager.Color_Paltes [PaletNumber];
+		Palet = Color_Swap_Manager.inst.Color_Paltes [PaletNumber];
 		R = GetComponent<Renderer> ();
 		Ran = Random.Range (0, Palet.Color_Paltes.Count);
 	}

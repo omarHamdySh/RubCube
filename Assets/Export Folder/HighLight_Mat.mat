@@ -88,4 +88,4 @@ Material:
     - _Emission: {r: 0, g: 1, b: 0.19833946, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 1, g: 1, b: 1, a: 0}
-    - _TintColor: {r: 0.23113209, g: 1, b: 0.2554243, a: 0.062008735}
+    - _TintColor: {r: 0, g: 1, b: 0, a: 0.32377023}
