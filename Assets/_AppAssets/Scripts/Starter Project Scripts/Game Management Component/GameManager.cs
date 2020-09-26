@@ -52,8 +52,8 @@ public class GameManager : MonoBehaviour
 
     //sfx
     public AudioSource sfxSource;
-    public AudioClip normalJumpingAudioClip;
-    public AudioClip boostedJumpingAudioClip;
+    public AudioClip ElectricShockSound;
+    public AudioClip ShapePopulationSound;
     public AudioClip bouncHitAudioClip;
     public AudioClip characterCombinationAudioClip;
     public List<AudioClip> maleHurtAudioClip;

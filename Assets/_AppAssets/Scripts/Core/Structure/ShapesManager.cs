@@ -52,6 +52,8 @@ public class ShapesManager : MonoBehaviour
 
     public void OnPopulationAnimationEnd()
     {
+        GameManager.Instance.sfxSource = GameManager.Instance.ShapePopulationSound;
+        GameManager.Instance.sfxSource.Play();
         OnShapePopualationEnd.Invoke();
     }
 

@@ -84,15 +84,18 @@ public class Face : MonoBehaviour
         {
             if (raw1States [i] == false)
             {
-                Instantiate (IndecatorCube, rows [0].faceBlockContainers [i].transform.position, Quaternion.identity);
+                //Assign color to FadeinOut.cs -> Color
+               var emptyCube = Instantiate (IndecatorCube, rows [0].faceBlockContainers [i].transform.position, Quaternion.identity);
             }
             if (raw2States [i] == false)
             {
-                Instantiate (IndecatorCube, rows [1].faceBlockContainers [i].transform.position, Quaternion.identity);
+                //Assign color to FadeinOut.cs -> Color
+                Instantiate(IndecatorCube, rows [1].faceBlockContainers [i].transform.position, Quaternion.identity);
             }
             if (raw3States [i] == false)
             {
-                Instantiate (IndecatorCube, rows [2].faceBlockContainers [i].transform.position, Quaternion.identity);
+                //Assign color to FadeinOut.cs -> Color
+                Instantiate(IndecatorCube, rows [2].faceBlockContainers [i].transform.position, Quaternion.identity);
             }
 
         }
