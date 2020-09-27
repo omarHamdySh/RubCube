@@ -203,6 +203,39 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_MethodName: startGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_MethodName: StartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4137939888967880142}
+        m_MethodName: StartTimer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnHideComplete:
     m_PersistentCalls:
       m_Calls:
@@ -224,7 +257,6 @@ MonoBehaviour:
   AnimatedElements:
   - {fileID: 1542200810428202254}
   - {fileID: 2758803205077366945}
-  - {fileID: 883161223263271452}
   - {fileID: 5494277255847859863}
   SharedAnimatedElements: []
   SwitchAfter: 0.5
@@ -2886,7 +2918,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.00012207031}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5241070086642639029
@@ -3650,8 +3682,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Pause
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
-  m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3850,14 +3882,13 @@ GameObject:
   - component: {fileID: 1272658227288629890}
   - component: {fileID: 3157730388676973455}
   - component: {fileID: 5721675707603700901}
-  - component: {fileID: 883161223263271452}
   m_Layer: 5
   m_Name: BestScoreTxt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1272658227288629890
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3908,8 +3939,8 @@ MonoBehaviour:
 
     0'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3998,497 +4029,6 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &883161223263271452
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2475146062193714044}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4aabaad2a5fa0c74aa80bd5847f2e560, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Visible: 0
-  UseSimpleActivation: 0
-  ShowingClip: {fileID: 0}
-  HidingClip: {fileID: 0}
-  OnShow:
-    m_PersistentCalls:
-      m_Calls: []
-  OnHide:
-    m_PersistentCalls:
-      m_Calls: []
-  OnShowComplete:
-    m_PersistentCalls:
-      m_Calls: []
-  OnHideComplete:
-    m_PersistentCalls:
-      m_Calls: []
-  IgnoreEventsOnInitialization: 0
-  MenuDependent: 1
-  Prewarm: 1
-  DeactivateWhileInvisible: 0
-  ShowAfter: 0
-  HideAfter: 0
-  HidingDuration: 0.5
-  ShowingDuration: 0.5
-  UseUnscaledTime: 0
-  durationLink: 1
-  ControlledBy: {fileID: 5392411161240344308}
-  MovementSection:
-    UseSection: 1
-    HideType: 3
-    ShowType: 3
-    TypeLink: 1
-    WantedVectorValue: {x: 9999, y: 9999, z: 0}
-    WantedFloatValue: 0
-    ShowAfter: -1
-    HideAfter: -1
-    ShowingDuration: -1
-    HidingDuration: -1
-    startVectorValue: {x: 0, y: 0, z: 0}
-    startFloatValue: 0
-    hidingEasingParams:
-      Custom:
-        Curve:
-          serializedVersion: 2
-          m_Curve:
-          - serializedVersion: 3
-            time: 0
-            value: 0
-            inSlope: 0
-            outSlope: 1
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          - serializedVersion: 3
-            time: 1
-            value: 1
-            inSlope: 1
-            outSlope: 0
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          m_PreInfinity: 2
-          m_PostInfinity: 2
-          m_RotationOrder: 4
-      EaseIn:
-        EasingPower: 2
-      EaseOut:
-        EasingPower: 2
-      EaseInOut:
-        EasingPower: 2
-      EaseInElastic:
-        ElasticityPower: 0.5
-      EaseOutElastic:
-        ElasticityPower: 0.5
-      EaseInOutElastic:
-        ElasticityPower: 0.5
-    showingEasingParams:
-      Custom:
-        Curve:
-          serializedVersion: 2
-          m_Curve:
-          - serializedVersion: 3
-            time: 0
-            value: 0
-            inSlope: 0
-            outSlope: 1
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          - serializedVersion: 3
-            time: 1
-            value: 1
-            inSlope: 1
-            outSlope: 0
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          m_PreInfinity: 2
-          m_PostInfinity: 2
-          m_RotationOrder: 4
-      EaseIn:
-        EasingPower: 2
-      EaseOut:
-        EasingPower: 2
-      EaseInOut:
-        EasingPower: 2
-      EaseInElastic:
-        ElasticityPower: 0.5
-      EaseOutElastic:
-        ElasticityPower: 0.5
-      EaseInOutElastic:
-        ElasticityPower: 0.5
-  HidingPosition: 0
-  EdgeGap: 0.25
-  LocalCustomPosition: 1
-  RotationSection:
-    UseSection: 0
-    HideType: 3
-    ShowType: 3
-    TypeLink: 1
-    WantedVectorValue: {x: 0, y: 0, z: 0}
-    WantedFloatValue: 0
-    ShowAfter: -1
-    HideAfter: -1
-    ShowingDuration: -1
-    HidingDuration: -1
-    startVectorValue: {x: 0, y: 0, z: 0}
-    startFloatValue: 0
-    hidingEasingParams:
-      Custom:
-        Curve:
-          serializedVersion: 2
-          m_Curve:
-          - serializedVersion: 3
-            time: 0
-            value: 0
-            inSlope: 0
-            outSlope: 1
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          - serializedVersion: 3
-            time: 1
-            value: 1
-            inSlope: 1
-            outSlope: 0
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          m_PreInfinity: 2
-          m_PostInfinity: 2
-          m_RotationOrder: 4
-      EaseIn:
-        EasingPower: 2
-      EaseOut:
-        EasingPower: 2
-      EaseInOut:
-        EasingPower: 2
-      EaseInElastic:
-        ElasticityPower: 0.5
-      EaseOutElastic:
-        ElasticityPower: 0.5
-      EaseInOutElastic:
-        ElasticityPower: 0.5
-    showingEasingParams:
-      Custom:
-        Curve:
-          serializedVersion: 2
-          m_Curve:
-          - serializedVersion: 3
-            time: 0
-            value: 0
-            inSlope: 0
-            outSlope: 1
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          - serializedVersion: 3
-            time: 1
-            value: 1
-            inSlope: 1
-            outSlope: 0
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          m_PreInfinity: 2
-          m_PostInfinity: 2
-          m_RotationOrder: 4
-      EaseIn:
-        EasingPower: 2
-      EaseOut:
-        EasingPower: 2
-      EaseInOut:
-        EasingPower: 2
-      EaseInElastic:
-        ElasticityPower: 0.5
-      EaseOutElastic:
-        ElasticityPower: 0.5
-      EaseInOutElastic:
-        ElasticityPower: 0.5
-  ShowingDirection: 0
-  HidingDirection: 0
-  ScaleSection:
-    UseSection: 0
-    HideType: 3
-    ShowType: 3
-    TypeLink: 1
-    WantedVectorValue: {x: 0, y: 0, z: 0}
-    WantedFloatValue: 0
-    ShowAfter: -1
-    HideAfter: -1
-    ShowingDuration: -1
-    HidingDuration: -1
-    startVectorValue: {x: 0, y: 0, z: 0}
-    startFloatValue: 0
-    hidingEasingParams:
-      Custom:
-        Curve:
-          serializedVersion: 2
-          m_Curve:
-          - serializedVersion: 3
-            time: 0
-            value: 0
-            inSlope: 0
-            outSlope: 1
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          - serializedVersion: 3
-            time: 1
-            value: 1
-            inSlope: 1
-            outSlope: 0
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          m_PreInfinity: 2
-          m_PostInfinity: 2
-          m_RotationOrder: 4
-      EaseIn:
-        EasingPower: 2
-      EaseOut:
-        EasingPower: 2
-      EaseInOut:
-        EasingPower: 2
-      EaseInElastic:
-        ElasticityPower: 0.5
-      EaseOutElastic:
-        ElasticityPower: 0.5
-      EaseInOutElastic:
-        ElasticityPower: 0.5
-    showingEasingParams:
-      Custom:
-        Curve:
-          serializedVersion: 2
-          m_Curve:
-          - serializedVersion: 3
-            time: 0
-            value: 0
-            inSlope: 0
-            outSlope: 1
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          - serializedVersion: 3
-            time: 1
-            value: 1
-            inSlope: 1
-            outSlope: 0
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          m_PreInfinity: 2
-          m_PostInfinity: 2
-          m_RotationOrder: 4
-      EaseIn:
-        EasingPower: 2
-      EaseOut:
-        EasingPower: 2
-      EaseInOut:
-        EasingPower: 2
-      EaseInElastic:
-        ElasticityPower: 0.5
-      EaseOutElastic:
-        ElasticityPower: 0.5
-      EaseInOutElastic:
-        ElasticityPower: 0.5
-  OpacitySection:
-    UseSection: 0
-    HideType: 3
-    ShowType: 3
-    TypeLink: 1
-    WantedVectorValue: {x: 0, y: 0, z: 0}
-    WantedFloatValue: 0
-    ShowAfter: -1
-    HideAfter: -1
-    ShowingDuration: -1
-    HidingDuration: -1
-    startVectorValue: {x: 0, y: 0, z: 0}
-    startFloatValue: 0
-    hidingEasingParams:
-      Custom:
-        Curve:
-          serializedVersion: 2
-          m_Curve:
-          - serializedVersion: 3
-            time: 0
-            value: 0
-            inSlope: 0
-            outSlope: 1
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          - serializedVersion: 3
-            time: 1
-            value: 1
-            inSlope: 1
-            outSlope: 0
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          m_PreInfinity: 2
-          m_PostInfinity: 2
-          m_RotationOrder: 4
-      EaseIn:
-        EasingPower: 2
-      EaseOut:
-        EasingPower: 2
-      EaseInOut:
-        EasingPower: 2
-      EaseInElastic:
-        ElasticityPower: 0.5
-      EaseOutElastic:
-        ElasticityPower: 0.5
-      EaseInOutElastic:
-        ElasticityPower: 0.5
-    showingEasingParams:
-      Custom:
-        Curve:
-          serializedVersion: 2
-          m_Curve:
-          - serializedVersion: 3
-            time: 0
-            value: 0
-            inSlope: 0
-            outSlope: 1
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          - serializedVersion: 3
-            time: 1
-            value: 1
-            inSlope: 1
-            outSlope: 0
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          m_PreInfinity: 2
-          m_PostInfinity: 2
-          m_RotationOrder: 4
-      EaseIn:
-        EasingPower: 2
-      EaseOut:
-        EasingPower: 2
-      EaseInOut:
-        EasingPower: 2
-      EaseInElastic:
-        ElasticityPower: 0.5
-      EaseOutElastic:
-        ElasticityPower: 0.5
-      EaseInOutElastic:
-        ElasticityPower: 0.5
-  TargetFader: {fileID: 0}
-  SliceSection:
-    UseSection: 0
-    HideType: 3
-    ShowType: 3
-    TypeLink: 1
-    WantedVectorValue: {x: 0, y: 0, z: 0}
-    WantedFloatValue: 0
-    ShowAfter: -1
-    HideAfter: -1
-    ShowingDuration: -1
-    HidingDuration: -1
-    startVectorValue: {x: 0, y: 0, z: 0}
-    startFloatValue: 0
-    hidingEasingParams:
-      Custom:
-        Curve:
-          serializedVersion: 2
-          m_Curve:
-          - serializedVersion: 3
-            time: 0
-            value: 0
-            inSlope: 0
-            outSlope: 1
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          - serializedVersion: 3
-            time: 1
-            value: 1
-            inSlope: 1
-            outSlope: 0
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          m_PreInfinity: 2
-          m_PostInfinity: 2
-          m_RotationOrder: 4
-      EaseIn:
-        EasingPower: 2
-      EaseOut:
-        EasingPower: 2
-      EaseInOut:
-        EasingPower: 2
-      EaseInElastic:
-        ElasticityPower: 0.5
-      EaseOutElastic:
-        ElasticityPower: 0.5
-      EaseInOutElastic:
-        ElasticityPower: 0.5
-    showingEasingParams:
-      Custom:
-        Curve:
-          serializedVersion: 2
-          m_Curve:
-          - serializedVersion: 3
-            time: 0
-            value: 0
-            inSlope: 0
-            outSlope: 1
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          - serializedVersion: 3
-            time: 1
-            value: 1
-            inSlope: 1
-            outSlope: 0
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          m_PreInfinity: 2
-          m_PostInfinity: 2
-          m_RotationOrder: 4
-      EaseIn:
-        EasingPower: 2
-      EaseOut:
-        EasingPower: 2
-      EaseInOut:
-        EasingPower: 2
-      EaseInElastic:
-        ElasticityPower: 0.5
-      EaseOutElastic:
-        ElasticityPower: 0.5
-      EaseInOutElastic:
-        ElasticityPower: 0.5
-  SliceImage: {fileID: 0}
 --- !u!1 &2768620815672114210
 GameObject:
   m_ObjectHideFlags: 0
@@ -4685,8 +4225,8 @@ MonoBehaviour:
 
     Tap to Retry'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
-  m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -6659,8 +6199,8 @@ MonoBehaviour:
 
     0:0'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -8518,8 +8058,8 @@ MonoBehaviour:
 
     0'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -9817,10 +9357,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AutoFindHolders: 1
   AllMenus:
+  - {fileID: 1452462949704154267}
+  - {fileID: 5392411161240344308}
   - {fileID: 8109603464605401201}
   - {fileID: 8907806383791327748}
-  - {fileID: 5392411161240344308}
-  - {fileID: 1452462949704154267}
   CurActiveMenu: {fileID: 1452462949704154267}
   AnimateFirstMenuAtStart: 0
   AllPopups:
@@ -10975,6 +10515,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2655590572844358255}
   - component: {fileID: 4137939888967880142}
+  - component: {fileID: 2002572877921500503}
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
@@ -11019,15 +10560,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isUIOpen: 1
   loading: {fileID: 1697753049093567902}
+  timerSeconds: 0
   timerTxt: {fileID: 6132192900271894124}
   timerTextAnimScale: {x: 1.1, y: 1.1, z: 1}
   timerDelayAnim: 0.5
   timerLastSecondsColor: red
   scoreTxt: {fileID: 6307803999884208209}
   bestScoreTxt: {fileID: 5721675707603700901}
-  timer: 0
   winCanvas: {fileID: 2625844955647633405}
   loseCanvas: {fileID: 1980829301430535320}
+--- !u!114 &2002572877921500503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6957733822187526481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85842c21c1b9cd34282b064ea35b051d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7114356466023818297
 GameObject:
   m_ObjectHideFlags: 0
@@ -11845,8 +11398,8 @@ MonoBehaviour:
 
     Tap to Play next level'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
-  m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
