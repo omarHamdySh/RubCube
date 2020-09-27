@@ -25,6 +25,7 @@ public class Face : MonoBehaviour
     public Direction faceDirection;
     public Array2DBool patternTypeGrid;
     public Collider faceCollider;
+    public bool isPopulated;
 
     public List<FaceBlocksRow> rows;
     public List<GameObject> indicatorsPrefabsObjects;

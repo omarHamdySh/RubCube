@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Events;
 
 public class ContinuousExplosionForce : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class ContinuousExplosionForce : MonoBehaviour
 	public float upwardsModifier = 0.0f;
 	public ForceMode forceMode;
 	GameObject G;
+	public UnityEvent OnExplosion;
+
 	// Use this for initialization
 	void Start () {
 		G= GameObject.Find ("Grenade");
@@ -17,6 +20,7 @@ public class ContinuousExplosionForce : MonoBehaviour
 	public void Explode()
 	{
 		StartCoroutine ("Exp");
+		OnExplosion.Invoke();
 	}
 
 	IEnumerator Exp()
@@ -31,7 +35,6 @@ public class ContinuousExplosionForce : MonoBehaviour
 			}
 			yield return new WaitForFixedUpdate();
 		}
-	
 	}
 	// Update is called once per frame
 

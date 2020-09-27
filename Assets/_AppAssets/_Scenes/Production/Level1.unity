@@ -10894,6 +10894,8 @@ MonoBehaviour:
   - {fileID: 1549174203}
   - {fileID: 1694042033}
   - {fileID: 1684743392}
+  swipeControl: {fileID: 1474968135}
+  isAIControlled: 0
   OnShapeMatch:
     m_PersistentCalls:
       m_Calls:
@@ -10919,7 +10921,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1474968135}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnDoesntMatch:
+    m_PersistentCalls:
+      m_Calls: []
+  OnRotationDoesntMatch:
     m_PersistentCalls:
       m_Calls: []
   OnShapePopualationEnd:
@@ -10947,6 +10963,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1474968135}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   OnAllShapesPopulation:
     m_PersistentCalls:
       m_Calls:
@@ -10972,7 +10999,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  swipeControl: {fileID: 1474968135}
+  OnCurrentFaceIsPopulated:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCurrentFaceIsUnPopulated:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &564868240
 Transform:
   m_ObjectHideFlags: 0
@@ -15857,6 +15889,7 @@ MonoBehaviour:
   faceDirection: 0
   patternTypeGrid: {fileID: 11400000, guid: b4bf06a84f3670a4e935df25448e7d9e, type: 2}
   faceCollider: {fileID: 839248807}
+  isPopulated: 0
   rows:
   - {fileID: 437665707}
   - {fileID: 414022062}
@@ -18569,6 +18602,7 @@ MonoBehaviour:
   faceDirection: 0
   patternTypeGrid: {fileID: 11400000, guid: 1c37746a0aa71ab46bb434f1fc9190b0, type: 2}
   faceCollider: {fileID: 985437199}
+  isPopulated: 0
   rows:
   - {fileID: 1511550402}
   - {fileID: 1298228392}
@@ -21287,6 +21321,7 @@ MonoBehaviour:
   faceDirection: 0
   patternTypeGrid: {fileID: 11400000, guid: 492f8548acd15e8498d9f54311c65afc, type: 2}
   faceCollider: {fileID: 1109998485}
+  isPopulated: 0
   rows:
   - {fileID: 1917922766}
   - {fileID: 713396987}
@@ -28020,6 +28055,7 @@ MonoBehaviour:
   faceDirection: 0
   patternTypeGrid: {fileID: 11400000, guid: 9b6497eef6ed54644845251f0361aa4f, type: 2}
   faceCollider: {fileID: 1549174202}
+  isPopulated: 0
   rows:
   - {fileID: 24202170}
   - {fileID: 1101943931}
@@ -31187,6 +31223,7 @@ MonoBehaviour:
   faceDirection: 0
   patternTypeGrid: {fileID: 11400000, guid: 3252b874cbd36754092f2fa9214e8844, type: 2}
   faceCollider: {fileID: 1684743394}
+  isPopulated: 0
   rows:
   - {fileID: 92545793}
   - {fileID: 71882356}
@@ -31418,6 +31455,7 @@ MonoBehaviour:
   faceDirection: 0
   patternTypeGrid: {fileID: 11400000, guid: 1c37746a0aa71ab46bb434f1fc9190b0, type: 2}
   faceCollider: {fileID: 1694042032}
+  isPopulated: 0
   rows:
   - {fileID: 1640525882}
   - {fileID: 741733842}

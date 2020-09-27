@@ -13,14 +13,25 @@ public class ShapesManager : MonoBehaviour
 
     public GameObject shapePrefab;
     public List<Shape> shapes;
-
+    public SwipeControl swipeControl;
+    [SerializeField] bool isAIControlled;
 
     public UnityEvent OnShapeMatch;
     public UnityEvent OnDoesntMatch;
+    public UnityEvent OnRotationDoesntMatch;
     public UnityEvent OnShapePopualationEnd;
     public UnityEvent OnAllShapesPopulation;
 
-    public SwipeControl swipeControl;
+    public UnityEvent OnCurrentFaceIsPopulated;
+    public UnityEvent OnCurrentFaceIsUnPopulated;
+
+    private void Start()
+    {
+        if (isAIControlled)
+        {
+            startGame();
+        }
+    }
 
     [ContextMenu("Initialize")]
     public void Init()
@@ -59,7 +70,7 @@ public class ShapesManager : MonoBehaviour
                 reInsert(tempShape);
                 shapes.Remove(tempShape);
             }
-           
+
             currentShape.hideRows();
             shapes.Add(currentShape);
 
@@ -90,6 +101,15 @@ public class ShapesManager : MonoBehaviour
         {
             if (rubixCube.currentUpFace.patternTypeGrid == currentShape.patternTypeGrid)
             {
+                if (rubixCube.currentUpFace.isPopulated)
+                {
+                    OnCurrentFaceIsPopulated.Invoke();
+                }
+                else
+                {
+                    OnCurrentFaceIsUnPopulated.Invoke();
+                }
+
                 rubixCube.currentUpFace.faceCollider.enabled = false;
                 bool isPopulatable = true;
 
@@ -116,11 +136,12 @@ public class ShapesManager : MonoBehaviour
 
                 if (isPopulatable)
                 {
+                    rubixCube.currentUpFace.isPopulated = true;
                     OnShapeMatch.Invoke();
                 }
                 else
                 {
-                    OnDoesntMatch.Invoke();
+                    OnRotationDoesntMatch.Invoke();
                 }
 
             }
