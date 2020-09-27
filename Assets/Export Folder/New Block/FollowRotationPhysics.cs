@@ -49,7 +49,7 @@ public class FollowRotationPhysics : MonoBehaviour
 		Vector3 error = T - rb.angularVelocity;
 		Vector3 force = Vector3.ClampMagnitude (gain * error, maxForce);
 
-		if (force != Vector3.zero)
+		if (force != Vector3.zero && force != null)
 		{
 			rb.AddTorque (force);
 		}
