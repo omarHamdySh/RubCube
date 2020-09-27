@@ -26,7 +26,7 @@ public class LevelUI : SceneHandller
     #endregion
 
     public bool isUIOpen = true;
-    [SerializeField] private Slider loading;
+    public Slider loading;
 
     private void Start()
     {
@@ -51,13 +51,7 @@ public class LevelUI : SceneHandller
     [SerializeField] private TextMeshProUGUI scoreTxt, bestScoreTxt;
 
     private bool isTimerAnimationOn;
-    //[SerializeField] private float timer; for test
     private Coroutine timerAnimCoroutine;
-
-    //private void Update()
-    //{
-    //    SetTimerText(timer);
-    //}
 
     public void SetTimerText(float timer)
     {
