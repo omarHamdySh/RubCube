@@ -151,8 +151,16 @@ public class ShapesManager : MonoBehaviour
 
     public void activateTheNextShape()
     {
-        currentShape = shapes[0];
-        currentShape.gameObject.SetActive(true);
-        shapes.RemoveAt(0);
+        if (shapes.Count>0)
+        {
+            currentShape = shapes[0];
+            currentShape.gameObject.SetActive(true);
+            shapes.RemoveAt(0);
+        }
+        else
+        {
+            GameManager.Instance.OnWin.Invoke();
+        }
+
     }
 }
