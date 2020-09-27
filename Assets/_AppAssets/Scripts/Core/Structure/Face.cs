@@ -16,6 +16,7 @@ public class Face : MonoBehaviour
         right
     }
 
+
     #endregion
 
     #region Public  DataMembers
@@ -35,6 +36,7 @@ public class Face : MonoBehaviour
     [ContextMenu("Initialize")]
     public virtual void Init()
     {
+        reset();
         foreach (var row in rows)
         {
             row.parentFace = this;
@@ -70,7 +72,10 @@ public class Face : MonoBehaviour
 
     public virtual void applyPattern()
     {
+        print("Do the pattern");
         bool[,] cells = patternTypeGrid.GetCells();
+
+
         for (int i = 0; i < patternTypeGrid.GridSize.x; i++)
         {
             for (int j = 0; j < patternTypeGrid.GridSize.y; j++)
@@ -111,6 +116,18 @@ public class Face : MonoBehaviour
                 Destroy(obj.gameObject);
 #endif
         }
+
+        indicatorsPrefabsObjects = new List<GameObject>();
+        FadeinOut[] indicators = GetComponentsInChildren<FadeinOut>();
+
+        foreach (var cubeObj in indicators)
+        {
+#if UNITY_EDITOR
+            DestroyImmediate(cubeObj.gameObject);
+#else
+                Destroy(cubeObj.gameObject);
+#endif
+        }
     }
 
     #endregion
@@ -120,7 +137,6 @@ public class Face : MonoBehaviour
     {
         if (other.gameObject.tag == "Shape")
         {
-            parentCube.OnPatternFillEnd.Invoke();
             other.GetComponent<Collider>().enabled = false;
         }
     }
@@ -164,7 +180,7 @@ public class Face : MonoBehaviour
     public void OnPatternFillEnd()
     {
         FadeinOut[] indicators = GetComponentsInChildren<FadeinOut>();
-       
+
         foreach (var cubeObj in indicators)
         {
             Destroy(cubeObj.gameObject);

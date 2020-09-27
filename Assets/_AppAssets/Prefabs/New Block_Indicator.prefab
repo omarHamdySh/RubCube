@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4401962836064832663}
   - component: {fileID: 907346555642474739}
   - component: {fileID: 6426530787411083120}
+  - component: {fileID: 2231833838774095440}
   m_Layer: 9
   m_Name: New Block_Indicator
   m_TagString: Target
@@ -93,3 +94,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FadeColor: {r: 0, g: 1, b: 0.16084719, a: 0}
+--- !u!65 &2231833838774095440
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6426530787411083121}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0000002, y: 1.0000002, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}

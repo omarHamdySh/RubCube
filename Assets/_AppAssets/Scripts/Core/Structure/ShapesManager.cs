@@ -32,10 +32,10 @@ public class ShapesManager : MonoBehaviour
             shape.Init();
             shapeObj.SetActive(false);
         }
+
         currentShape = shapes[0];
         currentShape.gameObject.SetActive(true);
         shapes.RemoveAt(0);
-        
     }
 
     public void compareShapeAndCurrenUpFace()
@@ -53,10 +53,31 @@ public class ShapesManager : MonoBehaviour
         {
             if (rubixCube.currentUpFace.patternTypeGrid == currentShape.patternTypeGrid)
             {
-                Vector3 shapeDirection = (currentShape.transform.forward - currentShape.faceCollider.bounds.center).normalized;
-                Vector3 currentUpFaceDirection = (rubixCube.currentUpFace.transform.forward - rubixCube.currentUpFace.faceCollider.bounds.center).normalized;
+                rubixCube.currentUpFace.faceCollider.enabled = false;
+                bool isPopulatable = true;
 
-                if (Vector3.Dot(shapeDirection, currentUpFaceDirection) > 0.95f)
+                foreach (var rows in currentShape.rows)
+                {
+                    foreach (var container in rows.faceBlockContainers)
+                    {
+                        if (container.gameObject.activeInHierarchy)
+                        {
+                            RaycastHit hit;
+                            // Does the ray intersect any objects excluding the player layer
+                            if (Physics.Raycast(container.transform.position, -Vector3.up, out hit, Mathf.Infinity))
+                            {
+                                if (hit.collider.gameObject.tag != "Target")
+                                {
+                                    isPopulatable = false;
+                                }
+
+                            }
+                        }
+                    }
+                }
+                rubixCube.currentUpFace.faceCollider.enabled = true;
+
+                if (isPopulatable)
                 {
                     OnShapeMatch.Invoke();
                 }
@@ -64,6 +85,7 @@ public class ShapesManager : MonoBehaviour
                 {
                     OnDoesntMatch.Invoke();
                 }
+
             }
             else
             {
@@ -75,16 +97,23 @@ public class ShapesManager : MonoBehaviour
     public void populateCurrentShape()
     {
         currentShape.transform.DOMove(rubixCube.currentUpFace.transform.position, populationAnimationDuration).SetEase(populationAnimationEaseType).OnComplete(OnPopulationAnimationEnd);
+        currentShape.isAboutToPopulated = true;
         GameManager.Instance.sfxSource.clip = GameManager.Instance.ShapePopulationSound;
         GameManager.Instance.sfxSource.Play();
+
     }
 
     public void OnPopulationAnimationEnd()
     {
-        currentShape.transform.parent = rubixCube.currentUpFace.transform;
-        currentShape = null;
-        OnShapePopualationEnd.Invoke();
-        rubixCube.OnPatternFillEnd.Invoke();
+        if (currentShape.isAboutToPopulated)
+        {
+            currentShape.isAboutToPopulated = false;
+            currentShape.transform.parent = rubixCube.currentUpFace.transform;
+            currentShape = null;
+            OnShapePopualationEnd.Invoke();
+            rubixCube.OnPatternFillEnd.Invoke();
+        }
+
     }
 
     public int randomizeRotation()
@@ -109,7 +138,6 @@ public class ShapesManager : MonoBehaviour
     [ContextMenu("Reset")]
     public void reset()
     {
-
         foreach (var shape in shapes)
         {
 #if UNITY_EDITOR
@@ -118,7 +146,13 @@ public class ShapesManager : MonoBehaviour
                 Destroy(shape.gameObject);
 #endif
         }
-
         shapes = new List<Shape>();
+    }
+
+    public void activateTheNextShape()
+    {
+        currentShape = shapes[0];
+        currentShape.gameObject.SetActive(true);
+        shapes.RemoveAt(0);
     }
 }

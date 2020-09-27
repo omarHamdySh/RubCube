@@ -88,7 +88,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  currentUpFace: {fileID: 0}
+  currentUpFace: {fileID: 2323655211341448137}
   color_Swap_Manager: {fileID: 3334999095017469366}
   rotateDuration: 1
   IndecatorCube: {fileID: 6426530787411083121, guid: f179be9512ab81f4583136ae31067a60,
@@ -98,7 +98,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4241533e66c59d84ca7a91cd84f09804, type: 2}
   - {fileID: 11400000, guid: 1c37746a0aa71ab46bb434f1fc9190b0, type: 2}
   - {fileID: 11400000, guid: a8e06c400fd2dbe4bb66fbdc083394d0, type: 2}
-  facePatternsTypes: []
+  facePatternsTypes:
+  - {fileID: 11400000, guid: 1c37746a0aa71ab46bb434f1fc9190b0, type: 2}
+  - {fileID: 11400000, guid: 4241533e66c59d84ca7a91cd84f09804, type: 2}
+  - {fileID: 11400000, guid: 1c37746a0aa71ab46bb434f1fc9190b0, type: 2}
+  - {fileID: 11400000, guid: 1c37746a0aa71ab46bb434f1fc9190b0, type: 2}
+  - {fileID: 11400000, guid: b4bf06a84f3670a4e935df25448e7d9e, type: 2}
+  - {fileID: 11400000, guid: 1c37746a0aa71ab46bb434f1fc9190b0, type: 2}
 --- !u!114 &1799096007964463349
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -345,7 +351,7 @@ PrefabInstance:
         type: 3}
       propertyPath: patternTypeGrid
       value: 
-      objectReference: {fileID: 11400000, guid: 4241533e66c59d84ca7a91cd84f09804,
+      objectReference: {fileID: 11400000, guid: b4bf06a84f3670a4e935df25448e7d9e,
         type: 2}
     - target: {fileID: 3522233977804906990, guid: ae0c9d51d36f00340a39fbabfd3e69cb,
         type: 3}
@@ -415,22 +421,22 @@ PrefabInstance:
     - target: {fileID: 4491454036599699141, guid: ae0c9d51d36f00340a39fbabfd3e69cb,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4935226147724106477, guid: ae0c9d51d36f00340a39fbabfd3e69cb,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5388792846151781830, guid: ae0c9d51d36f00340a39fbabfd3e69cb,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5698320711621748630, guid: ae0c9d51d36f00340a39fbabfd3e69cb,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6581921385820793775, guid: ae0c9d51d36f00340a39fbabfd3e69cb,
         type: 3}
@@ -440,7 +446,7 @@ PrefabInstance:
     - target: {fileID: 8074126312412249404, guid: ae0c9d51d36f00340a39fbabfd3e69cb,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae0c9d51d36f00340a39fbabfd3e69cb, type: 3}
@@ -529,6 +535,17 @@ PrefabInstance:
       propertyPath: parentCube
       value: 
       objectReference: {fileID: 7830735185784678813}
+    - target: {fileID: 2689575570328466925, guid: ae0c9d51d36f00340a39fbabfd3e69cb,
+        type: 3}
+      propertyPath: faceDirection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2689575570328466925, guid: ae0c9d51d36f00340a39fbabfd3e69cb,
+        type: 3}
+      propertyPath: patternTypeGrid
+      value: 
+      objectReference: {fileID: 11400000, guid: 4241533e66c59d84ca7a91cd84f09804,
+        type: 2}
     - target: {fileID: 3522233977804906990, guid: ae0c9d51d36f00340a39fbabfd3e69cb,
         type: 3}
       propertyPath: m_IsActive
@@ -594,6 +611,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4491454036599699141, guid: ae0c9d51d36f00340a39fbabfd3e69cb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4908625307356164915, guid: ae0c9d51d36f00340a39fbabfd3e69cb,
         type: 3}
       propertyPath: faceBlockContainer.Array.size
@@ -619,10 +641,30 @@ PrefabInstance:
       propertyPath: parentFace
       value: 
       objectReference: {fileID: 4066281721895404923}
+    - target: {fileID: 4935226147724106477, guid: ae0c9d51d36f00340a39fbabfd3e69cb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5388792846151781830, guid: ae0c9d51d36f00340a39fbabfd3e69cb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5698320711621748630, guid: ae0c9d51d36f00340a39fbabfd3e69cb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6581921385820793775, guid: ae0c9d51d36f00340a39fbabfd3e69cb,
         type: 3}
       propertyPath: m_Name
       value: 'Face (6) - Default: Down Direction'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8074126312412249404, guid: ae0c9d51d36f00340a39fbabfd3e69cb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9140945109272527817, guid: ae0c9d51d36f00340a39fbabfd3e69cb,
         type: 3}
@@ -934,8 +976,13 @@ PrefabInstance:
         type: 3}
       propertyPath: patternTypeGrid
       value: 
-      objectReference: {fileID: 11400000, guid: b4bf06a84f3670a4e935df25448e7d9e,
+      objectReference: {fileID: 11400000, guid: 4241533e66c59d84ca7a91cd84f09804,
         type: 2}
+    - target: {fileID: 2689575570328466925, guid: ae0c9d51d36f00340a39fbabfd3e69cb,
+        type: 3}
+      propertyPath: faceDirection
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3522233977804906990, guid: ae0c9d51d36f00340a39fbabfd3e69cb,
         type: 3}
       propertyPath: m_IsActive
@@ -1006,6 +1053,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4491454036599699141, guid: ae0c9d51d36f00340a39fbabfd3e69cb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4908625307356164915, guid: ae0c9d51d36f00340a39fbabfd3e69cb,
         type: 3}
       propertyPath: faceBlockContainer.Array.size
@@ -1051,7 +1103,22 @@ PrefabInstance:
       propertyPath: faceBlockContainers.Array.data[2]
       value: 
       objectReference: {fileID: 5186168719788983154}
+    - target: {fileID: 4935226147724106477, guid: ae0c9d51d36f00340a39fbabfd3e69cb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4973723284858734298, guid: ae0c9d51d36f00340a39fbabfd3e69cb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5388792846151781830, guid: ae0c9d51d36f00340a39fbabfd3e69cb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5698320711621748630, guid: ae0c9d51d36f00340a39fbabfd3e69cb,
         type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1062,6 +1129,11 @@ PrefabInstance:
       value: 'Face (4) - Default: Forward Direction'
       objectReference: {fileID: 0}
     - target: {fileID: 7902808777349990527, guid: ae0c9d51d36f00340a39fbabfd3e69cb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8074126312412249404, guid: ae0c9d51d36f00340a39fbabfd3e69cb,
         type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1376,8 +1448,13 @@ PrefabInstance:
         type: 3}
       propertyPath: patternTypeGrid
       value: 
-      objectReference: {fileID: 11400000, guid: a8e06c400fd2dbe4bb66fbdc083394d0,
+      objectReference: {fileID: 11400000, guid: 4241533e66c59d84ca7a91cd84f09804,
         type: 2}
+    - target: {fileID: 2689575570328466925, guid: ae0c9d51d36f00340a39fbabfd3e69cb,
+        type: 3}
+      propertyPath: faceDirection
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3522233977804906990, guid: ae0c9d51d36f00340a39fbabfd3e69cb,
         type: 3}
       propertyPath: m_IsActive
@@ -1443,6 +1520,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4491454036599699141, guid: ae0c9d51d36f00340a39fbabfd3e69cb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4908625307356164915, guid: ae0c9d51d36f00340a39fbabfd3e69cb,
         type: 3}
       propertyPath: faceBlockContainer.Array.size
@@ -1488,7 +1570,22 @@ PrefabInstance:
       propertyPath: faceBlockContainers.Array.data[2]
       value: 
       objectReference: {fileID: 6846251921926728198}
+    - target: {fileID: 4935226147724106477, guid: ae0c9d51d36f00340a39fbabfd3e69cb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4973723284858734298, guid: ae0c9d51d36f00340a39fbabfd3e69cb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5388792846151781830, guid: ae0c9d51d36f00340a39fbabfd3e69cb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5698320711621748630, guid: ae0c9d51d36f00340a39fbabfd3e69cb,
         type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1497,6 +1594,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: 'Face (3) - Default: Left Direction'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8074126312412249404, guid: ae0c9d51d36f00340a39fbabfd3e69cb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8081973819040418884, guid: ae0c9d51d36f00340a39fbabfd3e69cb,
         type: 3}
@@ -1803,7 +1905,7 @@ PrefabInstance:
     - target: {fileID: 93826562797120623, guid: ae0c9d51d36f00340a39fbabfd3e69cb,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 488665841061145835, guid: ae0c9d51d36f00340a39fbabfd3e69cb,
         type: 3}
@@ -1813,7 +1915,7 @@ PrefabInstance:
     - target: {fileID: 730890134809153812, guid: ae0c9d51d36f00340a39fbabfd3e69cb,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 740602487278893258, guid: ae0c9d51d36f00340a39fbabfd3e69cb,
         type: 3}
@@ -1875,6 +1977,17 @@ PrefabInstance:
       propertyPath: parentCube
       value: 
       objectReference: {fileID: 7830735185784678813}
+    - target: {fileID: 2689575570328466925, guid: ae0c9d51d36f00340a39fbabfd3e69cb,
+        type: 3}
+      propertyPath: faceDirection
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2689575570328466925, guid: ae0c9d51d36f00340a39fbabfd3e69cb,
+        type: 3}
+      propertyPath: patternTypeGrid
+      value: 
+      objectReference: {fileID: 11400000, guid: b4bf06a84f3670a4e935df25448e7d9e,
+        type: 2}
     - target: {fileID: 3522233977804906990, guid: ae0c9d51d36f00340a39fbabfd3e69cb,
         type: 3}
       propertyPath: m_IsActive
@@ -1945,6 +2058,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4491454036599699141, guid: ae0c9d51d36f00340a39fbabfd3e69cb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4908625307356164915, guid: ae0c9d51d36f00340a39fbabfd3e69cb,
         type: 3}
       propertyPath: faceBlockContainer.Array.size
@@ -1970,7 +2088,22 @@ PrefabInstance:
       propertyPath: parentFace
       value: 
       objectReference: {fileID: 9185796200399933171}
+    - target: {fileID: 4935226147724106477, guid: ae0c9d51d36f00340a39fbabfd3e69cb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4973723284858734298, guid: ae0c9d51d36f00340a39fbabfd3e69cb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5388792846151781830, guid: ae0c9d51d36f00340a39fbabfd3e69cb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5698320711621748630, guid: ae0c9d51d36f00340a39fbabfd3e69cb,
         type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1981,6 +2114,11 @@ PrefabInstance:
       value: 'Face (5) - Default: Bacward Direction'
       objectReference: {fileID: 0}
     - target: {fileID: 7902808777349990527, guid: ae0c9d51d36f00340a39fbabfd3e69cb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8074126312412249404, guid: ae0c9d51d36f00340a39fbabfd3e69cb,
         type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -2275,12 +2413,17 @@ PrefabInstance:
         type: 3}
       propertyPath: patternTypeGrid
       value: 
-      objectReference: {fileID: 11400000, guid: 1c37746a0aa71ab46bb434f1fc9190b0,
+      objectReference: {fileID: 11400000, guid: 4241533e66c59d84ca7a91cd84f09804,
         type: 2}
+    - target: {fileID: 2689575570328466925, guid: ae0c9d51d36f00340a39fbabfd3e69cb,
+        type: 3}
+      propertyPath: faceDirection
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3522233977804906990, guid: ae0c9d51d36f00340a39fbabfd3e69cb,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3953820563802676951, guid: ae0c9d51d36f00340a39fbabfd3e69cb,
         type: 3}
@@ -2345,7 +2488,7 @@ PrefabInstance:
     - target: {fileID: 4289836234466450581, guid: ae0c9d51d36f00340a39fbabfd3e69cb,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4908625307356164915, guid: ae0c9d51d36f00340a39fbabfd3e69cb,
         type: 3}

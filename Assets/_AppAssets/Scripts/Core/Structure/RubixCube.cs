@@ -55,7 +55,7 @@ public class RubixCube : MonoBehaviour
     [ContextMenu("Initialize Cube")]
     public void Init()
     {
-        RandomizePatterns();
+        //RandomizePatterns();
         InitiFaces();
     }
 
@@ -77,10 +77,13 @@ public class RubixCube : MonoBehaviour
         {
             face.parentCube = this;
             (face).Init();
+            facePatternsTypes.Add(face.patternTypeGrid);
             //OnPatternFillEnd.AddListener(face.OnPatternFillEnd);
 
         }
     }
+
+    #region Switch Methods 
 
     [ContextMenu("twist Left")]
     public void twistLeft()
@@ -121,6 +124,8 @@ public class RubixCube : MonoBehaviour
             this.transform.DORotate(transform.rotation.eulerAngles + Vector3.forward * -90, rotateDuration, RotateMode.FastBeyond360).OnComplete(OnTwistComplete).SetEase(Ease.Linear);
         }
     }
+    
+    #endregion
 
     public void OnTwistComplete()
     {

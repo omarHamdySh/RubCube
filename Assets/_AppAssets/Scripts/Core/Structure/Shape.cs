@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Shape : Face
 {
+
+    public bool isAboutToPopulated;
     [ContextMenu("Initialize Shape")]
     public override void Init()
     {
@@ -17,6 +19,7 @@ public class Shape : Face
 
     public override void applyPattern()
     {
+        print("Do the inverse of pattern");
         bool[,] cells = patternTypeGrid.GetCells();
         for (int i = 0; i < patternTypeGrid.GridSize.x; i++)
         {
