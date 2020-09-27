@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -2415299508469727308}
   - component: {fileID: -7948734335039139292}
   - component: {fileID: -8391744088550765749}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FaceBlock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -159,6 +159,7 @@ MonoBehaviour:
   maxForce: 40
   gain: 5
   target: {fileID: 0}
+  rb: {fileID: 0}
 --- !u!114 &-8391744088550765749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,3 +178,4 @@ MonoBehaviour:
   gain: 5
   target: {fileID: 0}
   forceSphericalTensor: 0
+  rb: {fileID: 0}

@@ -13,6 +13,7 @@ TagManager:
   - TreasureBox
   - UncollectedPlayer
   - Shape
+  - Target
   layers:
   - Default
   - TransparentFX
@@ -23,7 +24,7 @@ TagManager:
   - 
   - 
   - Face
-  - 
+  - CubeBlock
   - 
   - 
   - 

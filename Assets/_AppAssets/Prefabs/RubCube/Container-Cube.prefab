@@ -46,7 +46,8 @@ GameObject:
   - component: {fileID: 2685129896438069920}
   - component: {fileID: 8191608076997234949}
   - component: {fileID: 2589588884580435500}
-  m_Layer: 0
+  - component: {fileID: 9027532176388786556}
+  m_Layer: 9
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -150,7 +151,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8926800414342949675}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: efefd090da504934e9907b442183b213, type: 3}
   m_Name: 
@@ -165,7 +166,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8926800414342949675}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e142587d211aba146863f79a786af595, type: 3}
   m_Name: 
@@ -174,4 +175,24 @@ MonoBehaviour:
   maxVel: 15
   maxForce: 40
   gain: 5
-  target: {fileID: 0}
+  target: {fileID: 4997369678600851265}
+  rb: {fileID: 2685129896438069920}
+--- !u!114 &9027532176388786556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8926800414342949675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9017b922bdd66694eb3ce8fc002787d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toVel: 2.5
+  maxVel: 15
+  maxForce: 40
+  gain: 5
+  target: {fileID: 4997369678600851265}
+  forceSphericalTensor: 0
+  rb: {fileID: 2685129896438069920}

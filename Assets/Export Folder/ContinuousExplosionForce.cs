@@ -13,6 +13,7 @@ public class ContinuousExplosionForce : MonoBehaviour
 		G= GameObject.Find ("Grenade");
 	}
 
+	[ContextMenu ("Explode")]
 	public void Explode()
 	{
 		StartCoroutine ("Exp");

@@ -10,10 +10,11 @@ public class FollowPositionPhysics : MonoBehaviour
 	public float maxForce = 40.0f;
 	public float gain = 5f;
 	public Transform target;
+	public Rigidbody rb;
 	void Start()
 	{
 		//target=transform;
-
+		rb = GetComponent<Rigidbody>();
 	}
 	void FixedUpdate()
 	{
@@ -22,9 +23,9 @@ public class FollowPositionPhysics : MonoBehaviour
 		// calc a target vel proportional to distance (clamped to maxVel)
 		Vector3 tgtVel = Vector3.ClampMagnitude(toVel * dist, maxVel);
 		// calculate the velocity error
-		Vector3 error = tgtVel - GetComponent<Rigidbody>().velocity;
+		Vector3 error = tgtVel - rb.velocity;
 		// calc a force proportional to the error (clamped to maxForce)
 		Vector3 force = Vector3.ClampMagnitude(gain * error, maxForce);
-		GetComponent<Rigidbody>().AddForce(force);
+		rb.AddForce(force);
 	}
 }

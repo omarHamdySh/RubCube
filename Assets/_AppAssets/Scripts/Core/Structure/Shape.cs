@@ -29,4 +29,22 @@ public class Shape : Face
             }
         }
     }
+
+    public void hideRows()
+    {
+        foreach (var row in rows)
+        {
+            row.gameObject.SetActive(false);
+        }
+    }
+
+    public void showRows() 
+    {
+        foreach (var row in rows)
+        {
+            row.gameObject.SetActive(true);
+        }
+    }
+
+
 }

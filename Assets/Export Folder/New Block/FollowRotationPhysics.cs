@@ -12,11 +12,11 @@ public class FollowRotationPhysics : MonoBehaviour
 	public float gain = 5f;
 	public Transform target;
 	public bool forceSphericalTensor = false;
-
+	public Rigidbody rb;
 	void Start ()
 	{
 		//	target=transform;
-
+		rb = GetComponent<Rigidbody>();
 		if (forceSphericalTensor)
 		{
 			GetComponent<Rigidbody> ().inertiaTensorRotation = Quaternion.identity;
@@ -43,15 +43,15 @@ public class FollowRotationPhysics : MonoBehaviour
 		Vector3 wY = y.normalized * thetaY;
 		Vector3 wZwY = Vector3.ClampMagnitude (toVel * (wZ + wY), maxVel);
 
-		Quaternion q = transform.rotation * GetComponent<Rigidbody> ().inertiaTensorRotation;
-		Vector3 T = q * Vector3.Scale (GetComponent<Rigidbody> ().inertiaTensor, Quaternion.Inverse (q) * wZwY);
+		Quaternion q = transform.rotation * rb.inertiaTensorRotation;
+		Vector3 T = q * Vector3.Scale (rb.inertiaTensor, Quaternion.Inverse (q) * wZwY);
 
-		Vector3 error = T - GetComponent<Rigidbody> ().angularVelocity;
+		Vector3 error = T - rb.angularVelocity;
 		Vector3 force = Vector3.ClampMagnitude (gain * error, maxForce);
 
 		if (force != Vector3.zero)
 		{
-			GetComponent<Rigidbody> ().AddTorque (force);
+			rb.AddTorque (force);
 		}
 	}
 }

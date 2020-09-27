@@ -19,6 +19,8 @@ public class ShapesManager : MonoBehaviour
     public UnityEvent OnDoesntMatch;
     public UnityEvent OnShapePopualationEnd;
 
+    public SwipeControl swipeControl;
+
     [ContextMenu("Initialize")]
     public void Init()
     {
@@ -30,12 +32,45 @@ public class ShapesManager : MonoBehaviour
             shapes.Add(shape);
             shape.patternTypeGrid = facePatternType;
             shape.Init();
-            shapeObj.SetActive(false);
+            shape.hideRows();
         }
+    }
 
+    [ContextMenu("Start Game")]
+    public void startGame()
+    {
         currentShape = shapes[0];
-        currentShape.gameObject.SetActive(true);
         shapes.RemoveAt(0);
+        currentShape.showRows();
+
+        if (rubixCube.currentUpFace.patternTypeGrid == currentShape.patternTypeGrid)
+        {
+            Shape tempShape = null;
+            foreach (Shape shape in shapes)
+            {
+                if (shape.patternTypeGrid != rubixCube.currentUpFace.patternTypeGrid)
+                    if (tempShape == null) tempShape = shape;
+            }
+
+            if (tempShape != null)
+            {
+                reInsert(tempShape);
+                shapes.Remove(tempShape);
+            }
+           
+            currentShape.hideRows();
+            shapes.Add(currentShape);
+
+            currentShape = shapes[0];
+            shapes.RemoveAt(0);
+            currentShape.showRows();
+        }
+    }
+
+
+    public void reInsert(Shape shape)
+    {
+        shapes.Insert(0, shape);
     }
 
     public void compareShapeAndCurrenUpFace()
@@ -98,6 +133,7 @@ public class ShapesManager : MonoBehaviour
     {
         currentShape.transform.DOMove(rubixCube.currentUpFace.transform.position, populationAnimationDuration).SetEase(populationAnimationEaseType).OnComplete(OnPopulationAnimationEnd);
         currentShape.isAboutToPopulated = true;
+        currentShape.transform.parent = rubixCube.currentUpFace.transform;
         GameManager.Instance.sfxSource.clip = GameManager.Instance.ShapePopulationSound;
         GameManager.Instance.sfxSource.Play();
 
@@ -108,7 +144,6 @@ public class ShapesManager : MonoBehaviour
         if (currentShape.isAboutToPopulated)
         {
             currentShape.isAboutToPopulated = false;
-            currentShape.transform.parent = rubixCube.currentUpFace.transform;
             currentShape = null;
             OnShapePopualationEnd.Invoke();
             rubixCube.OnPatternFillEnd.Invoke();
@@ -141,6 +176,8 @@ public class ShapesManager : MonoBehaviour
         foreach (var shape in shapes)
         {
 #if UNITY_EDITOR
+            if (!shape)
+                continue;
             DestroyImmediate(shape.gameObject);
 #else
                 Destroy(shape.gameObject);
@@ -151,10 +188,10 @@ public class ShapesManager : MonoBehaviour
 
     public void activateTheNextShape()
     {
-        if (shapes.Count>0)
+        if (shapes.Count > 0)
         {
             currentShape = shapes[0];
-            currentShape.gameObject.SetActive(true);
+            currentShape.showRows();
             shapes.RemoveAt(0);
         }
         else

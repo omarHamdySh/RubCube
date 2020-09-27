@@ -31,6 +31,11 @@ public class SwipeControl : MonoBehaviour
         Random_Dir[7] = -Vector3.right;
 
         // Random the first shape angle
+        rotateRubixCubeRandomly();
+    }
+
+    public void rotateRubixCubeRandomly()
+    {
         transform.rotation = Quaternion.AngleAxis(Rotations[Random.Range(0, Rotations.Length)], Random_Dir[Random.Range(0, Random_Dir.Length)]);
         OnRotationEnd.Invoke();
     }
