@@ -1598,15 +1598,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 11420886, guid: 937f39e2c24924745ba9e52a01447696, type: 3}
       propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11420886, guid: 937f39e2c24924745ba9e52a01447696, type: 3}
-      propertyPath: radius
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 11420886, guid: 937f39e2c24924745ba9e52a01447696, type: 3}
-      propertyPath: force
-      value: 50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 13553286, guid: 937f39e2c24924745ba9e52a01447696, type: 3}
       propertyPath: m_IsTrigger
