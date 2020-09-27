@@ -18,6 +18,7 @@ public class ShapesManager : MonoBehaviour
     public UnityEvent OnShapeMatch;
     public UnityEvent OnDoesntMatch;
     public UnityEvent OnShapePopualationEnd;
+    public UnityEvent OnAllShapesPopulation;
 
     public SwipeControl swipeControl;
 
@@ -146,6 +147,7 @@ public class ShapesManager : MonoBehaviour
         {
             currentShape.isAboutToPopulated = false;
             currentShape = null;
+            Handheld.Vibrate();
             OnShapePopualationEnd.Invoke();
             rubixCube.OnPatternFillEnd.Invoke();
         }
@@ -197,7 +199,7 @@ public class ShapesManager : MonoBehaviour
         }
         else
         {
-            GameManager.Instance.OnWin.Invoke();
+            OnAllShapesPopulation.Invoke();
         }
 
     }

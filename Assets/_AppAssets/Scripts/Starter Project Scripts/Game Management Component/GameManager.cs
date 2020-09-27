@@ -228,7 +228,6 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        gameplayFSMManager.toRunningState();
         StartLevel.Invoke();
         isStart = true;
     }
