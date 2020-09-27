@@ -24,6 +24,7 @@ public class ShapesManager : MonoBehaviour
     [ContextMenu("Initialize")]
     public void Init()
     {
+        //reset();
         foreach (var facePatternType in rubixCube.facePatternsTypes)
         {
             var shapeObj = Instantiate(shapePrefab, transform.position, Quaternion.identity, transform);

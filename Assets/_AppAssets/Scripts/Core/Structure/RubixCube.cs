@@ -32,6 +32,8 @@ public class RubixCube : MonoBehaviour
     public float rotateDuration;
     public GameObject IndecatorCube;
 
+    public ShapesManager shapesManager;
+
     public List<Array2DBool> allPatternsTypes;
     public List<Array2DBool> facePatternsTypes;
     #endregion
@@ -57,6 +59,7 @@ public class RubixCube : MonoBehaviour
     {
         //RandomizePatterns();
         InitiFaces();
+        shapesManager.Init();
     }
 
     public void RandomizePatterns()
@@ -67,7 +70,6 @@ public class RubixCube : MonoBehaviour
             List<Array2DBool> tempList = new List<Array2DBool>(allPatternsTypes);
             var pattern = tempList[UnityEngine.Random.Range(0, tempList.Count - 1)];
             tempList.Remove(pattern);
-            facePatternsTypes.Add(pattern);
             faces[i].patternTypeGrid = pattern;
         }
     }
@@ -233,6 +235,7 @@ public class RubixCube : MonoBehaviour
             face.reset();
         }
         facePatternsTypes = new List<Array2DBool>();
+        shapesManager.Init();
     }
 
     public void removeCurrentUpFaceHighlights()
