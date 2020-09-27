@@ -40,6 +40,13 @@ public class LevelUI : SceneHandller
 
 
     #region Main
+    [Header("Main")]
+    [SerializeField] private float timerSeconds;
+
+    public void StartTimer()
+    {
+        TimerConroller.Instance.StartTimer(timerSeconds, SetTimerText, OnTimerStoped);
+    }
     #endregion
 
     #region Gameplay
@@ -101,6 +108,11 @@ public class LevelUI : SceneHandller
     {
         bestScoreTxt.text = "Best Score\n" + bestScore;
         PlayerPrefs.SetInt(ImportantData.LevelScore + SceneManager.GetActiveScene().buildIndex, bestScore);
+    }
+
+    public void OnTimerStoped()
+    {
+        print("timerEnd");
     }
     #endregion
 

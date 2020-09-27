@@ -270,14 +270,14 @@ public class TimeManager : MonoBehaviour
         //{
         //    isUpdating = true;
         //}
-        //if (isUpdating)
-        //{
-        //    if (GameManager.Instance.isTesting)
-        //    {
-        //        Debug.Log("time is counting");
-        //    }
-        //    gameTime.update();
-        //}
+        if (isUpdating)
+        {
+            if (GameManager.Instance.isTesting)
+            {
+                Debug.Log("time is counting");
+            }
+            gameTime.update();
+        }
     }
     public void pauseTime()
     {
