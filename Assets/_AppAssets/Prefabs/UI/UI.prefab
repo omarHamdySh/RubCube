@@ -11018,13 +11018,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isUIOpen: 1
-  loading: {fileID: 0}
+  loading: {fileID: 1697753049093567902}
   timerTxt: {fileID: 6132192900271894124}
   timerTextAnimScale: {x: 1.1, y: 1.1, z: 1}
   timerDelayAnim: 0.5
   timerLastSecondsColor: red
   scoreTxt: {fileID: 6307803999884208209}
   bestScoreTxt: {fileID: 5721675707603700901}
+  timer: 0
   winCanvas: {fileID: 2625844955647633405}
   loseCanvas: {fileID: 1980829301430535320}
 --- !u!1 &7114356466023818297
