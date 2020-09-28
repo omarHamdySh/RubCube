@@ -7,15 +7,10 @@ public class Color_Swap_Manager : MonoBehaviour
     public static Color_Swap_Manager inst;
     public Color indicatorColor;
     public List<Color_Palet> Color_Paltes = new List<Color_Palet> ();
+    public List<Material> blocksMaterials = new List<Material>();
     void Awake ()
     {
         inst = this;
-    }
-
-    // Update is called once per frame
-    void Update ()
-    {
-
     }
 
 }

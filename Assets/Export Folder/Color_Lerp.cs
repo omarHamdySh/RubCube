@@ -10,14 +10,18 @@ public class Color_Lerp : MonoBehaviour
 	float time;
 	public float speed = 1.0f;
 	public int PaletNumber = 0;
+	public int materialNumber = 0;
 	FaceBlock _faceblock;
 	Color_Palet Palet;
 	int Ran;
 	void Start ()
 	{
 		_faceblock = GetComponent<FaceBlock> ();
+		PaletNumber = Random.Range(0, Color_Swap_Manager.inst.Color_Paltes.Count);
+		materialNumber = Random.Range(0, Color_Swap_Manager.inst.blocksMaterials.Count);
 		Palet = Color_Swap_Manager.inst.Color_Paltes [PaletNumber];
 		R = GetComponent<Renderer> ();
+		R.material = Color_Swap_Manager.inst.blocksMaterials[materialNumber];
 		Ran = Random.Range (0, Palet.Color_Paltes.Count);
 	}
 
