@@ -235,7 +235,7 @@ public class RubixCube : MonoBehaviour
             face.reset();
         }
         facePatternsTypes = new List<Array2DBool>();
-        shapesManager.Init();
+        shapesManager.reset();
     }
 
     public void removeCurrentUpFaceHighlights()

@@ -1,15 +1,14 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class HollowController : MonoBehaviour
 {
-    public bool isHollow;
-    [SerializeField] private Material sourceMat;
+    [SerializeField] private Material trueMaterial;
+    [SerializeField] private Material falseMaterial;
     [SerializeField] private MeshRenderer mesh;
-    [SerializeField] private Color matColor;
-
-    private Material hollowMaterial;
+    public bool isPopulatable;
 
     private void Start()
     {
@@ -18,29 +17,32 @@ public class HollowController : MonoBehaviour
 
     private void Init()
     {
-        if (isHollow)
-        {
-            if (!mesh)
-            {
-                mesh = GetComponent<MeshRenderer>();
-            }
+        //if (isHollow)
+        //{
+        //    if (!mesh)
+        //    {
+        //        mesh = GetComponent<MeshRenderer>();
+        //    }
 
-            hollowMaterial = new Material(sourceMat);
-            mesh.material = hollowMaterial;
-            ChangeMatColor(matColor);
-        }
+        //    hollowMaterial = new Material(sourceMat);
+        //    mesh.material = hollowMaterial;
+        //    ChangeMatColor(falseColor);
+        //}
     }
 
-    /// <summary>
-    /// Change the Color of material
-    /// </summary>
-    /// <param name="color"></param>
-    public void ChangeMatColor(Color color)
+
+    public void changeColorToFalse()
     {
-        if (isHollow)
-        {
-            //hollowMaterial.SetColor("_OutlineColor", color);
-            hollowMaterial.color = color;
-        }
+        mesh = GetComponent<MeshRenderer>();
+        mesh.material = falseMaterial;
+        mesh.sharedMaterial.DOFade(0.2f, "_ColorTint", 0.5f).SetLoops(-1, LoopType.Yoyo).From(.05f);
+
+    }
+
+    public void changeColorToTrue()
+    {
+        mesh = GetComponent<MeshRenderer>();
+        mesh.material = trueMaterial;
+        mesh.sharedMaterial.DOFade(0.2f, "_ColorTint", 0.5f).SetLoops(-1, LoopType.Yoyo).From(.05f);
     }
 }

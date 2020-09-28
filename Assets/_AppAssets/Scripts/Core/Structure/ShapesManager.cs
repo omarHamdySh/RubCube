@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using DG.Tweening;
+using System;
 
 public class ShapesManager : MonoBehaviour
 {
@@ -12,9 +13,13 @@ public class ShapesManager : MonoBehaviour
     public Ease populationAnimationEaseType;
 
     public GameObject shapePrefab;
+    public GameObject phantomBlock;
+
+
     public List<Shape> shapes;
     public SwipeControl swipeControl;
     [SerializeField] bool isAIControlled;
+    List<GameObject> phantomObjects = new List<GameObject>();
 
     public UnityEvent OnShapeMatch;
     public UnityEvent OnDoesntMatch;
@@ -31,6 +36,7 @@ public class ShapesManager : MonoBehaviour
         {
             startGame();
         }
+
     }
 
     [ContextMenu("Initialize")]
@@ -78,6 +84,9 @@ public class ShapesManager : MonoBehaviour
             shapes.RemoveAt(0);
             currentShape.showRows();
         }
+
+        compareShapeAndCurrenUpFace();
+
     }
 
 
@@ -89,6 +98,7 @@ public class ShapesManager : MonoBehaviour
     public void compareShapeAndCurrenUpFace()
     {
         StartCoroutine(compareFaces());
+        StartCoroutine(projectShapePhantom());
         OnShapeMatch.AddListener(populateCurrentShape);
     }
 
@@ -123,9 +133,14 @@ public class ShapesManager : MonoBehaviour
                             // Does the ray intersect any objects excluding the player layer
                             if (Physics.Raycast(container.transform.position, -Vector3.up, out hit, Mathf.Infinity))
                             {
+
                                 if (hit.collider.gameObject.tag != "Target")
                                 {
                                     isPopulatable = false;
+                                }
+                                else
+                                {
+
                                 }
 
                             }
@@ -152,6 +167,84 @@ public class ShapesManager : MonoBehaviour
         }
     }
 
+    IEnumerator projectShapePhantom()
+    {
+        yield return new WaitForSeconds(0.1f);
+
+        if (currentShape != null)
+        {
+            if (phantomObjects.Count == 0) ;
+            {
+                foreach (var rows in currentShape.rows)
+                {
+                    foreach (var container in rows.faceBlockContainers)
+                    {
+                        if (container.gameObject.activeInHierarchy)
+                        {
+                            RaycastHit hit;
+                            // Does the ray intersect any objects excluding the player layer
+                            if (Physics.Raycast(container.transform.position, -Vector3.up, out hit, Mathf.Infinity))
+                            {
+                                var phantomObject = Instantiate(phantomBlock, hit.point /*+ (Vector3.up * .5f)*/, Quaternion.identity, currentShape.transform);
+                                phantomObjects.Add(phantomObject);
+
+                                if (hit.collider.gameObject.tag != "Target")
+                                {
+                                    updatePhantomObjectsColors(false);
+                                }
+                                else
+                                {
+                                    updatePhantomObjectsColors(true);
+
+                                }
+
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private void updatePhantomObjectsColors(bool state)
+    {
+        bool isAnyFalse = false;
+
+        foreach (var phantomObject in phantomObjects)
+        {
+            var controller = phantomObject.GetComponent<HollowController>();
+
+            if (!controller.isPopulatable)
+            {
+                isAnyFalse = true;
+            }
+        }
+
+        foreach (var phantomObject in phantomObjects)
+        {
+            var controller = phantomObject.GetComponent<HollowController>();
+
+            if (state)
+            {
+                if (isAnyFalse)
+                {
+                    controller.isPopulatable = false;
+                    controller.changeColorToFalse();
+                }
+                else
+                {
+                    controller.isPopulatable = true;
+                    controller.changeColorToTrue();
+                }
+            }
+            else
+            {
+                controller.isPopulatable = false;
+                controller.changeColorToFalse();
+            }
+        }
+    }
+
     public void populateCurrentShape()
     {
         currentShape.transform.DOMove(rubixCube.currentUpFace.transform.position, populationAnimationDuration).SetEase(populationAnimationEaseType).OnComplete(OnPopulationAnimationEnd);
@@ -159,7 +252,7 @@ public class ShapesManager : MonoBehaviour
         currentShape.transform.parent = rubixCube.currentUpFace.transform;
         GameManager.Instance.sfxSource.clip = GameManager.Instance.ShapePopulationSound;
         GameManager.Instance.sfxSource.Play();
-
+        deletePhantomObjects();
     }
 
     public void OnPopulationAnimationEnd()
@@ -175,9 +268,19 @@ public class ShapesManager : MonoBehaviour
 
     }
 
+    public void deletePhantomObjects()
+    {
+        foreach (var obj in phantomObjects)
+        {
+            Destroy(obj.gameObject);
+        }
+
+        phantomObjects = new List<GameObject>();
+    }
+
     public int randomizeRotation()
     {
-        int num = Random.Range(0, 5);
+        int num = UnityEngine.Random.Range(0, 5);
 
         switch (num)
         {
