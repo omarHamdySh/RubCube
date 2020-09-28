@@ -9,7 +9,8 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Platform 4
   m_Shader: {fileID: 4800000, guid: 078b2a90d062e49c9903390f113619d3, type: 3}
-  m_ShaderKeywords: BACK_GRADIENT_ON COLR_1_2 FRONT_GRADIENT_ON LEFT_GRADIENT_ON RIGHT_GRADIENT_ON
+  m_ShaderKeywords: BACK_GRADIENT_ON COLR_1_2 FRONT_GRADIENT_ON LEFT_GRADIENT_ON
+    RIGHT_GRADIENT_ON
   m_LightmapFlags: 5
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
