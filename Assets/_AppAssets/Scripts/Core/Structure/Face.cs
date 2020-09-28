@@ -89,7 +89,7 @@ public class Face : MonoBehaviour
                     {
                         //Assign color to FadeinOut.cs -> Color
                         var emptyIndicatorCube = Instantiate(parentCube.IndecatorCube, rows[i].faceBlockContainers[j].transform.position, Quaternion.identity, transform);
-                        emptyIndicatorCube.GetComponent<FadeinOut>().FadeColor = parentCube.color_Swap_Manager.indicatorColor;
+                        emptyIndicatorCube.GetComponent<FadeinOut>().updateColor(parentCube.color_Swap_Manager.indicatorColor);
                         indicatorsPrefabsObjects.Add(emptyIndicatorCube);
                     }
                 }
