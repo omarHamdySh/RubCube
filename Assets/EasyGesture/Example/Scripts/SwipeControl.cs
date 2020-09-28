@@ -4,6 +4,7 @@ using UnityEngine.Events;
 
 public class SwipeControl : MonoBehaviour
 {
+
     [SerializeField] private Transform playerPos;
     [SerializeField] private float rotateTime = 3.0f;
     [SerializeField] private float rotateDegrees = 90.0f;
@@ -13,6 +14,14 @@ public class SwipeControl : MonoBehaviour
     private Vector3 Pos;
     private float[] Rotations = new float[4];
     private Vector3[] Random_Dir = new Vector3[8];
+    public bool isTutorialMode;
+
+    public bool freezeSwipeRightFaceUP;
+    public bool freezeSwipeLeftFaceUP;
+    public bool freezeSwipeRightFaceDown;
+    public bool freezeSwipeLeftFaceDown;
+    public bool freezeSwipeRight;
+    public bool freezeSwipeLeft;
 
     private void Start()
     {
@@ -30,8 +39,11 @@ public class SwipeControl : MonoBehaviour
         Random_Dir[6] = -Vector3.left;
         Random_Dir[7] = -Vector3.right;
 
-        // Random the first shape angle
-        rotateRubixCubeRandomly();
+        if (!isTutorialMode)
+        {
+            // Random the first shape angle
+            rotateRubixCubeRandomly();
+        }
     }
 
     public void rotateRubixCubeRandomly()
@@ -63,28 +75,34 @@ public class SwipeControl : MonoBehaviour
             case EasyGesture.Gesture.SWIPE_DOWN:
                 if (Pos.x < (Screen.width / 2))
                 {
+                    if (!freezeSwipeLeftFaceUP)
                     StartCoroutine(Rotate_obj(transform, playerPos, Vector3.forward, rotateDegrees, rotateTime));
                 }
                 if (Pos.x > (Screen.width / 2))
                 {
-                    StartCoroutine(Rotate_obj(transform, playerPos, Vector3.left, rotateDegrees, rotateTime));
+                    if (!freezeSwipeRightFaceUP)
+                        StartCoroutine(Rotate_obj(transform, playerPos, Vector3.left, rotateDegrees, rotateTime));
                 }
                 break;
             case EasyGesture.Gesture.SWIPE_UP:
                 if (Pos.x < (Screen.width / 2))
                 {
-                    StartCoroutine(Rotate_obj(transform, playerPos, -Vector3.forward, rotateDegrees, rotateTime));
+                    if (!freezeSwipeLeftFaceDown)
+                        StartCoroutine(Rotate_obj(transform, playerPos, -Vector3.forward, rotateDegrees, rotateTime));
                 }
                 if (Pos.x > (Screen.width / 2))
                 {
-                    StartCoroutine(Rotate_obj(transform, playerPos, -Vector3.left, rotateDegrees, rotateTime));
+                    if (!freezeSwipeRightFaceDown)
+                        StartCoroutine(Rotate_obj(transform, playerPos, -Vector3.left, rotateDegrees, rotateTime));
                 }
                 break;
             case EasyGesture.Gesture.SWIPE_LEFT:
-                StartCoroutine(Rotate_obj(transform, playerPos, Vector3.up, rotateDegrees, rotateTime));
+                if (!freezeSwipeLeft)
+                    StartCoroutine(Rotate_obj(transform, playerPos, Vector3.up, rotateDegrees, rotateTime));
                 break;
             case EasyGesture.Gesture.SWIPE_RIGHT:
-                StartCoroutine(Rotate_obj(transform, playerPos, -Vector3.up, rotateDegrees, rotateTime));
+                if (!freezeSwipeRight)
+                    StartCoroutine(Rotate_obj(transform, playerPos, -Vector3.up, rotateDegrees, rotateTime));
                 break;
         }
     }

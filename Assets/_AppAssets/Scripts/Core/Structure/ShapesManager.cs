@@ -13,7 +13,7 @@ public class ShapesManager : MonoBehaviour
     public Ease populationAnimationEaseType;
 
     public GameObject shapePrefab;
-    public GameObject phantomBlock;
+    public GameObject phantomBlockPrefab;
 
 
     public List<Shape> shapes;
@@ -185,7 +185,7 @@ public class ShapesManager : MonoBehaviour
                             // Does the ray intersect any objects excluding the player layer
                             if (Physics.Raycast(container.transform.position, -Vector3.up, out hit, Mathf.Infinity))
                             {
-                                var phantomObject = Instantiate(phantomBlock, hit.point /*+ (Vector3.up * .5f)*/, Quaternion.identity, currentShape.transform);
+                                var phantomObject = Instantiate(phantomBlockPrefab, hit.point /*+ (Vector3.up * .5f)*/, Quaternion.identity, currentShape.transform);
                                 phantomObjects.Add(phantomObject);
 
                                 if (hit.collider.gameObject.tag != "Target")
@@ -323,8 +323,35 @@ public class ShapesManager : MonoBehaviour
         }
         else
         {
+            deletePhantomObjects();
             OnAllShapesPopulation.Invoke();
         }
+    }
 
+    public void AnimatePhantomsColor()
+    {
+
+        foreach (var obj in phantomObjects)
+        {
+            executePhantomAnimation(obj);
+        }
+
+    }
+
+    public void executePhantomAnimation(GameObject Obj)
+    {
+        Obj.transform.DOScaleY(0.4f, 0.2f).SetLoops(-1, LoopType.Yoyo).From(.2f);
+        Obj.GetComponent<MeshRenderer>().material.DOFade(0.5f, 0.2f).SetLoops(-1, LoopType.Yoyo).From(.19f);
+    }
+
+    public void killPhantomsColorAnimations()
+    {
+        foreach (var obj in phantomObjects)
+        {
+            obj.transform.SetGlobalScale(Vector3.one - Vector3.up * 0.8f);
+            obj.transform.DOKill();
+            obj.GetComponent<MeshRenderer>().material.DOKill();
+
+        }
     }
 }
