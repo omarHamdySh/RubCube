@@ -232,9 +232,13 @@ public class GameManager : MonoBehaviour
         isStart = true;
     }
 
+    public void declarePlayerWinning()
+    {
+        OnWin.Invoke();
+    }
     public void declarePlayerLoss()
     {
-
+        OnLose.Invoke();
     }
     /// <summary>
     /// Just For the sample scene purpose showing the data reflecting the 
