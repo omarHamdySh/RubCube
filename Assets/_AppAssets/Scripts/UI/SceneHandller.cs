@@ -19,7 +19,7 @@ public class SceneHandller : MonoBehaviour
     /// </summary>
     public void BackToMainMenu(Slider loading = null)
     {
-        StartCoroutine(LoadAsynchronously(0,loading));
+        StartCoroutine(LoadAsynchronously(0, loading));
     }
 
     /// <summary>
@@ -27,7 +27,7 @@ public class SceneHandller : MonoBehaviour
     /// </summary>
     public void RestartLevel(Slider loading = null)
     {
-        StartCoroutine(LoadAsynchronously(SceneManager.GetActiveScene().name,loading));
+        StartCoroutine(LoadAsynchronously(SceneManager.GetActiveScene().name, loading));
     }
 
     public void LoadNextLevel(Slider loading = null)
