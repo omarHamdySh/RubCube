@@ -17,18 +17,20 @@ public class Color_Lerp : MonoBehaviour
     void Start()
     {
         _faceblock = GetComponent<FaceBlock>();
-     
+
         if (Color_Swap_Manager.inst.Color_Paltes.Count != 0)
         {
             PaletNumber = Random.Range(0, Color_Swap_Manager.inst.Color_Paltes.Count);
             Palet = Color_Swap_Manager.inst.Color_Paltes[PaletNumber];
             Ran = Random.Range(0, Palet.Color_Paltes.Count);
         }
-     
-        R = GetComponent<Renderer>();
-        materialNumber = Random.Range(0, Color_Swap_Manager.inst.blocksMaterials.Count);
-        R.material = Color_Swap_Manager.inst.blocksMaterials[materialNumber];
 
+        R = GetComponent<Renderer>();
+        if (Color_Swap_Manager.inst.blocksMaterials.Count > 0)
+        {
+            materialNumber = Random.Range(0, Color_Swap_Manager.inst.blocksMaterials.Count);
+            R.material = Color_Swap_Manager.inst.blocksMaterials[materialNumber];
+        }
     }
 
     // Update is called once per frame
