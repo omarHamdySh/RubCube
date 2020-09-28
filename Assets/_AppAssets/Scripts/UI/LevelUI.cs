@@ -45,7 +45,7 @@ public class LevelUI : SceneHandller
 
     public void StartTimer()
     {
-        TimerConroller.Instance.StartTimer(timerSeconds, SetTimerText, OnTimerStoped);
+        TimerConroller.Instance.StartTimer(timerSeconds, SetTimerText, GameManager.Instance.declarePlayerLoss);
     }
     #endregion
 

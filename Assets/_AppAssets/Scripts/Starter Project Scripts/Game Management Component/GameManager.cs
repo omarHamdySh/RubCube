@@ -232,6 +232,10 @@ public class GameManager : MonoBehaviour
         isStart = true;
     }
 
+    public void declarePlayerLoss()
+    {
+
+    }
     /// <summary>
     /// Just For the sample scene purpose showing the data reflecting the 
     /// GamePlay FSM component details and how it works.
