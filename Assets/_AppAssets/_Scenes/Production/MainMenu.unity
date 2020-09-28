@@ -6626,7 +6626,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 11420886, guid: 937f39e2c24924745ba9e52a01447696, type: 3}
       propertyPath: OnExplosion.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11420886, guid: 937f39e2c24924745ba9e52a01447696, type: 3}
       propertyPath: OnExplosion.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
@@ -6650,7 +6650,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 11420886, guid: 937f39e2c24924745ba9e52a01447696, type: 3}
       propertyPath: OnExplosion.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.UI.Slider, UnityEngine.UI
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 11420886, guid: 937f39e2c24924745ba9e52a01447696, type: 3}
       propertyPath: OnExplosion.m_PersistentCalls.m_Calls.Array.data[1].m_Target
@@ -6659,7 +6659,7 @@ PrefabInstance:
     - target: {fileID: 11420886, guid: 937f39e2c24924745ba9e52a01447696, type: 3}
       propertyPath: OnExplosion.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 1112614883}
+      objectReference: {fileID: 0}
     - target: {fileID: 13553286, guid: 937f39e2c24924745ba9e52a01447696, type: 3}
       propertyPath: m_IsTrigger
       value: 1
@@ -15903,6 +15903,7 @@ MonoBehaviour:
   populationAnimationEaseType: 25
   shapePrefab: {fileID: 8955736874932391800, guid: 8d2d9fdc85905c5478501f36f405daae,
     type: 3}
+  phantomBlock: {fileID: 0}
   shapes:
   - {fileID: 11809271}
   - {fileID: 1857241988}
