@@ -5,6 +5,16 @@ using UnityEngine.Events;
 public class SwipeControl : MonoBehaviour
 {
 
+    public enum FacesSwipes
+    {
+        LeftUP,
+        LeftDown,
+        RightUP,
+        RightDown,
+        Left,
+        Right
+    }
+
     [SerializeField] private Transform playerPos;
     [SerializeField] private float rotateTime = 3.0f;
     [SerializeField] private float rotateDegrees = 90.0f;
@@ -13,22 +23,23 @@ public class SwipeControl : MonoBehaviour
 
     [SerializeField] UnityEvent OnSwipeRightFaceUpEnd;
     [SerializeField] UnityEvent OnSwipeLeftFaceUPEnd;
-    [SerializeField] UnityEvent OnSwipeLeftRightFaceDown;
-    [SerializeField] UnityEvent OnSwipeLeftLeftFaceDown;
-    [SerializeField] UnityEvent OnSwipeRight;
-    [SerializeField] UnityEvent OnSwipeLeft;
+    [SerializeField] UnityEvent OnSwipeRightFaceDownEnd;
+    [SerializeField] UnityEvent OnSwipeLeftFaceDownEnd;
+    [SerializeField] UnityEvent OnSwipeRightEnd;
+    [SerializeField] UnityEvent OnSwipeLeftEnd;
 
     private Vector3 Pos;
     private float[] Rotations = new float[4];
     private Vector3[] Random_Dir = new Vector3[8];
     public bool isTutorialMode;
 
-    public bool freezeSwipeRightFaceUP;
-    public bool freezeSwipeLeftFaceUP;
     public bool freezeSwipeRightFaceDown;
     public bool freezeSwipeLeftFaceDown;
+    public bool freezeSwipeRightFaceUp;
+    public bool freezeSwipeLeftFaceUP;
     public bool freezeSwipeRight;
     public bool freezeSwipeLeft;
+
 
     private void Start()
     {
@@ -82,34 +93,52 @@ public class SwipeControl : MonoBehaviour
             case EasyGesture.Gesture.SWIPE_DOWN:
                 if (Pos.x < (Screen.width / 2))
                 {
-                    if (!freezeSwipeLeftFaceUP)
-                    StartCoroutine(Rotate_obj(transform, playerPos, Vector3.forward, rotateDegrees, rotateTime));
+                    if (!freezeSwipeLeftFaceDown)
+                    {
+                        StartCoroutine(Rotate_obj(transform, playerPos, Vector3.forward, rotateDegrees, rotateTime));
+                        OnSwipeLeftFaceDownEnd.Invoke();
+                    }
                 }
                 if (Pos.x > (Screen.width / 2))
                 {
-                    if (!freezeSwipeRightFaceUP)
+                    if (!freezeSwipeRightFaceDown)
+                    {
                         StartCoroutine(Rotate_obj(transform, playerPos, Vector3.left, rotateDegrees, rotateTime));
+                        OnSwipeRightFaceDownEnd.Invoke();
+                    }
                 }
                 break;
             case EasyGesture.Gesture.SWIPE_UP:
                 if (Pos.x < (Screen.width / 2))
                 {
-                    if (!freezeSwipeLeftFaceDown)
+                    if (!freezeSwipeLeftFaceUP)
+                    {
                         StartCoroutine(Rotate_obj(transform, playerPos, -Vector3.forward, rotateDegrees, rotateTime));
+                        OnSwipeLeftFaceUPEnd.Invoke();
+                    }
                 }
                 if (Pos.x > (Screen.width / 2))
                 {
-                    if (!freezeSwipeRightFaceDown)
+                    if (!freezeSwipeRightFaceUp)
+                    {
                         StartCoroutine(Rotate_obj(transform, playerPos, -Vector3.left, rotateDegrees, rotateTime));
+                        OnSwipeRightFaceUpEnd.Invoke();
+                    }
                 }
                 break;
             case EasyGesture.Gesture.SWIPE_LEFT:
                 if (!freezeSwipeLeft)
+                {
                     StartCoroutine(Rotate_obj(transform, playerPos, Vector3.up, rotateDegrees, rotateTime));
+                    OnSwipeLeftEnd.Invoke();
+                }
                 break;
             case EasyGesture.Gesture.SWIPE_RIGHT:
                 if (!freezeSwipeRight)
+                {
                     StartCoroutine(Rotate_obj(transform, playerPos, -Vector3.up, rotateDegrees, rotateTime));
+                    OnSwipeRightEnd.Invoke();
+                }
                 break;
         }
     }
@@ -137,5 +166,46 @@ public class SwipeControl : MonoBehaviour
         //thisTransform.position = endPosition;
         rotating = false;
         OnRotationEnd.Invoke();
+    }
+
+
+
+    public void freezeThemAllButThis(FacesSwipes faceSwipe)
+    {
+        freezeThemAll();
+
+        switch (faceSwipe)
+        {
+            case FacesSwipes.LeftDown:
+                freezeSwipeLeftFaceDown = false;
+                break;
+            case FacesSwipes.LeftUP:
+                freezeSwipeLeftFaceUP = false;
+                break;
+            case FacesSwipes.RightUP:
+                freezeSwipeRightFaceUp = false;
+                break;
+            case FacesSwipes.RightDown:
+                freezeSwipeRightFaceDown = false;
+                break;
+            case FacesSwipes.Left:
+                freezeSwipeLeft = false;
+                break;
+            case FacesSwipes.Right:
+                freezeSwipeRight = false;
+                break;
+        }
+
+
+    }
+
+    public void freezeThemAll()
+    {
+        this.freezeSwipeRightFaceDown = true;
+        this.freezeSwipeLeftFaceDown = true;
+        this.freezeSwipeRightFaceUp = true;
+        this.freezeSwipeLeftFaceUP = true;
+        this.freezeSwipeRight = true;
+        this.freezeSwipeLeft = true;
     }
 }
