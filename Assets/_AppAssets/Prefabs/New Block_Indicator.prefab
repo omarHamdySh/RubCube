@@ -94,7 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2aad5103aa7c2b4b8e8833767826934, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FadeColor: {r: 0, g: 1, b: 0.16084719, a: 0}
+  FadeColor: {r: 1, g: 1, b: 1, a: 0}
 --- !u!65 &2231833838774095440
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -118,5 +118,5 @@ Halo:
   m_Enabled: 1
   m_Color:
     serializedVersion: 2
-    rgba: 4294493970
+    rgba: 4294967295
   m_Size: 1.01
