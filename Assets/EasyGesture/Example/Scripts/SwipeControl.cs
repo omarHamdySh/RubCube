@@ -11,6 +11,13 @@ public class SwipeControl : MonoBehaviour
     [SerializeField] private bool rotating = false;
     [SerializeField] UnityEvent OnRotationEnd;
 
+    [SerializeField] UnityEvent OnSwipeRightFaceUpEnd;
+    [SerializeField] UnityEvent OnSwipeLeftFaceUPEnd;
+    [SerializeField] UnityEvent OnSwipeLeftRightFaceDown;
+    [SerializeField] UnityEvent OnSwipeLeftLeftFaceDown;
+    [SerializeField] UnityEvent OnSwipeRight;
+    [SerializeField] UnityEvent OnSwipeLeft;
+
     private Vector3 Pos;
     private float[] Rotations = new float[4];
     private Vector3[] Random_Dir = new Vector3[8];
