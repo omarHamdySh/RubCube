@@ -1,5 +1,6 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using EZCameraShake;
+using UnityEngine;
 using UnityEngine.Events;
 
 public class ContinuousExplosionForce : MonoBehaviour
@@ -12,44 +13,52 @@ public class ContinuousExplosionForce : MonoBehaviour
 	public UnityEvent OnExplosion;
 
 	// Use this for initialization
-	void Start () {
-		G= GameObject.Find ("Grenade");
+	void Start ()
+	{
+		G = GameObject.Find ("Grenade");
 	}
 
 	[ContextMenu ("Explode")]
-	public void Explode()
+	public void Explode ()
 	{
 		StartCoroutine ("Exp");
-		OnExplosion.Invoke();
+		OnExplosion.Invoke ();
+		CameraShaker.Instance.ShakeOnce (0.5f, 20f, 0.1f, 0.5f);
 	}
 
-	IEnumerator Exp()
+	[ContextMenu ("Shake The Camera")]
+	public void Shake ()
 	{
-		for (int i = 0; i < 20; i++) {
-			foreach(Collider col in Physics.OverlapSphere(G.transform.position, radius))
+		CameraShaker.Instance.ShakeOnce (0.5f, 20f, 0.1f, 0.5f);
+	}
+
+	IEnumerator Exp ()
+	{
+		for (int i = 0; i < 20; i++)
+		{
+			foreach (Collider col in Physics.OverlapSphere (G.transform.position, radius))
 			{
-				if(col.GetComponent<Rigidbody>() != null)
+				if (col.GetComponent<Rigidbody> () != null)
 				{
-					col.GetComponent<Rigidbody>().AddExplosionForce(force+i+1,G.transform.position,radius,upwardsModifier,forceMode);
+					col.GetComponent<Rigidbody> ().AddExplosionForce (force + i + 1, G.transform.position, radius, upwardsModifier, forceMode);
 				}
 			}
-			yield return new WaitForFixedUpdate();
+			yield return new WaitForFixedUpdate ();
 		}
 	}
 	// Update is called once per frame
 
-
-
-	void FixedUpdate (){
-//	 if (Input.GetMouseButtonDown (0)) {
-//			foreach(Collider col in Physics.OverlapSphere(transform.position, radius))
-//			{
-//				if(col.GetComponent<Rigidbody>() != null)
-//				{
-//					col.GetComponent<Rigidbody>().AddExplosionForce(force,transform.position,radius,upwardsModifier,forceMode);
-//				}
-//			}
-//		}
+	void FixedUpdate ()
+	{
+		//	 if (Input.GetMouseButtonDown (0)) {
+		//			foreach(Collider col in Physics.OverlapSphere(transform.position, radius))
+		//			{
+		//				if(col.GetComponent<Rigidbody>() != null)
+		//				{
+		//					col.GetComponent<Rigidbody>().AddExplosionForce(force,transform.position,radius,upwardsModifier,forceMode);
+		//				}
+		//			}
+		//		}
 
 	}
 }
