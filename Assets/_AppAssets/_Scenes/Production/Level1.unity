@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 1aa492e8a30d9b24d993b8a8210acc84, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -2616,8 +2616,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4282400838
+  m_fontColor: {r: 0.2735849, g: 0.2490655, b: 0.2490655, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -11331,7 +11331,7 @@ PrefabInstance:
     - target: {fileID: 107726683185216249, guid: 7f4eac6dc8f992044b956cd3c421e931,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1697753048567665394, guid: 7f4eac6dc8f992044b956cd3c421e931,
         type: 3}
@@ -11401,7 +11401,7 @@ PrefabInstance:
     - target: {fileID: 3173276850374561954, guid: 7f4eac6dc8f992044b956cd3c421e931,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3902197874680668265, guid: 7f4eac6dc8f992044b956cd3c421e931,
         type: 3}
@@ -11436,7 +11436,7 @@ PrefabInstance:
     - target: {fileID: 5497564877306380672, guid: 7f4eac6dc8f992044b956cd3c421e931,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6957733822187526481, guid: 7f4eac6dc8f992044b956cd3c421e931,
         type: 3}
@@ -17521,8 +17521,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4282400838
+  m_fontColor: {r: 0.27450982, g: 0.2509804, b: 0.2509804, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -19363,7 +19363,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+  m_fontColor: {r: 0.27450982, g: 0.2509804, b: 0.2509804, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -31478,7 +31478,7 @@ Camera:
   m_GameObject: {fileID: 1647745793}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 0.876756, g: 0.8632076, b: 1, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -37040,7 +37040,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+  m_fontColor: {r: 0.27450982, g: 0.2509804, b: 0.2509804, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -43043,9 +43043,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3334999095017469366, guid: 9e27350aa60785b4893315cf9b183775,
         type: 3}
+      propertyPath: Color_Paltes.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334999095017469366, guid: 9e27350aa60785b4893315cf9b183775,
+        type: 3}
       propertyPath: blocksMaterials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: b4e07262cd79845f7b3ad62b93edb34b, type: 2}
+      objectReference: {fileID: 2100000, guid: 59944b54bb9211b48baaf6146446abad, type: 2}
     - target: {fileID: 3334999095017469366, guid: 9e27350aa60785b4893315cf9b183775,
         type: 3}
       propertyPath: blocksMaterials.Array.data[1]

@@ -55,7 +55,7 @@ public class SceneHandller : MonoBehaviour
     public void LoadNextLevel(Slider loading)
     {
         int nextLevelIndex = (SceneManager.GetActiveScene().buildIndex + 1) % SceneManager.sceneCountInBuildSettings;
-        nextLevelIndex = nextLevelIndex == 0 ? nextLevelIndex + 1 : nextLevelIndex;
+        //nextLevelIndex = nextLevelIndex == 0 ? nextLevelIndex + 1 : nextLevelIndex;
         LoadLevel(nextLevelIndex, loading);
     }
 

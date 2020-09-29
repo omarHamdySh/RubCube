@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: d146cfcb06b933e40a5a5e553f5cc755, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38444,6 +38444,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3334999095017469366, guid: 9e27350aa60785b4893315cf9b183775,
         type: 3}
+      propertyPath: Color_Paltes.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334999095017469366, guid: 9e27350aa60785b4893315cf9b183775,
+        type: 3}
+      propertyPath: blocksMaterials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334999095017469366, guid: 9e27350aa60785b4893315cf9b183775,
+        type: 3}
       propertyPath: indicatorColor.r
       value: 0.8773585
       objectReference: {fileID: 0}
@@ -38457,6 +38467,11 @@ PrefabInstance:
       propertyPath: indicatorColor.b
       value: 0.8773585
       objectReference: {fileID: 0}
+    - target: {fileID: 3334999095017469366, guid: 9e27350aa60785b4893315cf9b183775,
+        type: 3}
+      propertyPath: blocksMaterials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 62293a204f9882c45976830d231f970e, type: 2}
     - target: {fileID: 3723850129148561366, guid: 9e27350aa60785b4893315cf9b183775,
         type: 3}
       propertyPath: m_Name
@@ -44132,7 +44147,7 @@ Camera:
   m_GameObject: {fileID: 2070657294}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 0.9056604, g: 0.9056604, b: 0.9056604, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
