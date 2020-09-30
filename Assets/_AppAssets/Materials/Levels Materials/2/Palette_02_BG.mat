@@ -60,16 +60,16 @@ Material:
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
-    - _DirectionPitch: 41.9
-    - _DirectionYaw: 0
+    - _DirectionPitch: 45.2
+    - _DirectionYaw: 43.3
     - _DstBlend: 0
-    - _Exponent: 1.58
+    - _Exponent: 2.24
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _GradientHeight: 1
     - _GradientYStartPos: -0.4
-    - _Intensity: 1.081
+    - _Intensity: 1.008
     - _LightmapPower: 0.5
     - _Metallic: 0
     - _Mode: 0
@@ -87,9 +87,9 @@ Material:
     - _BackTopColor: {r: 1, g: 0.117078885, b: 0, a: 0}
     - _BottomColor: {r: 0, g: 0.5, b: 0.5, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Color1: {r: 0.31367335, g: 0.19215687, b: 0.62352943, a: 0}
-    - _Color2: {r: 0.9764706, g: 0.309804, b: 0.80035937, a: 0}
-    - _Direction: {r: 0, g: 0.7443116, b: 0.66783255, a: 0}
+    - _Color1: {r: 0.36862746, g: 0.3764706, b: 0.80784315, a: 0}
+    - _Color2: {r: 0.5019608, g: 1, b: 0.85882354, a: 0}
+    - _Direction: {r: 0.48663658, g: 0.7046342, b: 0.51640624, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FrontBottomColor: {r: 0, g: 0.5, b: 0.5, a: 0}
     - _FrontTopColor: {r: 0, g: 1, b: 0, a: 0}

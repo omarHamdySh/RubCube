@@ -7,9 +7,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Palette_02_01
-  m_Shader: {fileID: 4800000, guid: e205ec5a2dab342e78812532c2f67fd5, type: 3}
-  m_ShaderKeywords: BACK_GRADIENT_ON COLR_1_2 LEFT_GRADIENT_ON
+  m_Name: Palette_04_BG
+  m_Shader: {fileID: 4800000, guid: e32cae2a5bbfb41888ef2ba8391ab87d, type: 3}
+  m_ShaderKeywords: BACK_GRADIENT_ON COLR_1_2
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -60,12 +60,16 @@ Material:
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
+    - _DirectionPitch: 37.8
+    - _DirectionYaw: 35.9
     - _DstBlend: 0
+    - _Exponent: 1.72
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _GradientHeight: 1.5
-    - _GradientYStartPos: -0.6
+    - _GradientHeight: 1
+    - _GradientYStartPos: -0.4
+    - _Intensity: 1.044
     - _LightmapPower: 0.5
     - _Metallic: 0
     - _Mode: 0
@@ -79,18 +83,21 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _AmbientColor: {r: 0.5, g: 0.5, b: 0.5, a: 0}
-    - _BackBottomColor: {r: 0.9150943, g: 0.14244394, b: 0.14964046, a: 0}
-    - _BackTopColor: {r: 0.9372549, g: 0.2784314, b: 0.43529412, a: 0}
-    - _BottomColor: {r: 0.30588236, g: 0.65882355, b: 0.87058824, a: 0}
+    - _BackBottomColor: {r: 0.49019608, g: 0.12716176, b: 0.054901954, a: 0}
+    - _BackTopColor: {r: 1, g: 0.117078885, b: 0, a: 0}
+    - _BottomColor: {r: 0, g: 0.5, b: 0.5, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color1: {r: 0.17475079, g: 0.33490473, b: 0.4811321, a: 0}
+    - _Color2: {r: 0.32549018, g: 0.7933989, b: 0.972549, a: 0}
+    - _Direction: {r: 0.35939178, g: 0.79015505, b: 0.49648026, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _FrontBottomColor: {r: 0.30588236, g: 0.65882355, b: 0.87058824, a: 0}
-    - _FrontTopColor: {r: 0.30588236, g: 0.65882355, b: 0.87058824, a: 0}
-    - _LeftBottomColor: {r: 0.11307406, g: 0.7264151, b: 0.5671823, a: 0}
-    - _LeftTopColor: {r: 0.023529412, g: 0.8392157, b: 0.627451, a: 0}
+    - _FrontBottomColor: {r: 0.6666667, g: 0.2627451, b: 0.39457193, a: 0}
+    - _FrontTopColor: {r: 0.9764706, g: 0.25490198, b: 0.777993, a: 0}
+    - _LeftBottomColor: {r: 0, g: 0.5, b: 0.5, a: 0}
+    - _LeftTopColor: {r: 0, g: 1, b: 0, a: 0}
     - _LightTint: {r: 1, g: 1, b: 1, a: 0}
     - _LightmapColor: {r: 0, g: 0, b: 0, a: 0}
     - _Offset: {r: 0, g: 0, b: 0, a: 0}
-    - _RightBottomColor: {r: 0.30588236, g: 0.65882355, b: 0.87058824, a: 0}
-    - _RightTopColor: {r: 0.30588236, g: 0.65882355, b: 0.87058824, a: 0}
-    - _TopColor: {r: 0.30588236, g: 0.65882355, b: 0.87058824, a: 0}
+    - _RightBottomColor: {r: 0.6666667, g: 0.2627451, b: 0.39457193, a: 0}
+    - _RightTopColor: {r: 0.9764706, g: 0.25490198, b: 0.777993, a: 0}
+    - _TopColor: {r: 0, g: 1, b: 0, a: 0}

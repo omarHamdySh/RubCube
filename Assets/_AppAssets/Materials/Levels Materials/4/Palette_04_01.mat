@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Palette_02_01
+  m_Name: Palette_04_01
   m_Shader: {fileID: 4800000, guid: e205ec5a2dab342e78812532c2f67fd5, type: 3}
   m_ShaderKeywords: BACK_GRADIENT_ON COLR_1_2 LEFT_GRADIENT_ON
   m_LightmapFlags: 4
@@ -79,18 +79,18 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _AmbientColor: {r: 0.5, g: 0.5, b: 0.5, a: 0}
-    - _BackBottomColor: {r: 0.9150943, g: 0.14244394, b: 0.14964046, a: 0}
-    - _BackTopColor: {r: 0.9372549, g: 0.2784314, b: 0.43529412, a: 0}
-    - _BottomColor: {r: 0.30588236, g: 0.65882355, b: 0.87058824, a: 0}
+    - _BackBottomColor: {r: 0.6666667, g: 0.3404607, b: 0.2627451, a: 0}
+    - _BackTopColor: {r: 0.8962264, g: 0.5079765, b: 0.16487186, a: 0}
+    - _BottomColor: {r: 0.7830189, g: 0.51797193, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _FrontBottomColor: {r: 0.30588236, g: 0.65882355, b: 0.87058824, a: 0}
-    - _FrontTopColor: {r: 0.30588236, g: 0.65882355, b: 0.87058824, a: 0}
-    - _LeftBottomColor: {r: 0.11307406, g: 0.7264151, b: 0.5671823, a: 0}
-    - _LeftTopColor: {r: 0.023529412, g: 0.8392157, b: 0.627451, a: 0}
+    - _FrontBottomColor: {r: 0.7830189, g: 0.51797193, b: 0, a: 0}
+    - _FrontTopColor: {r: 0.9764706, g: 0.8374204, b: 0.25490198, a: 0}
+    - _LeftBottomColor: {r: 0.08788714, g: 0.745283, b: 0.7392763, a: 0}
+    - _LeftTopColor: {r: 0.4009434, g: 1, b: 0.4480005, a: 0}
     - _LightTint: {r: 1, g: 1, b: 1, a: 0}
     - _LightmapColor: {r: 0, g: 0, b: 0, a: 0}
     - _Offset: {r: 0, g: 0, b: 0, a: 0}
-    - _RightBottomColor: {r: 0.30588236, g: 0.65882355, b: 0.87058824, a: 0}
-    - _RightTopColor: {r: 0.30588236, g: 0.65882355, b: 0.87058824, a: 0}
-    - _TopColor: {r: 0.30588236, g: 0.65882355, b: 0.87058824, a: 0}
+    - _RightBottomColor: {r: 0.7830189, g: 0.51797193, b: 0, a: 0}
+    - _RightTopColor: {r: 0.9764706, g: 0.8374204, b: 0.25490198, a: 0}
+    - _TopColor: {r: 0.9764706, g: 0.8374204, b: 0.25490198, a: 0}
