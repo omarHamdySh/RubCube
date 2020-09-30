@@ -252,6 +252,7 @@ public class ShapesManager : MonoBehaviour
         currentShape.transform.parent = rubixCube.currentUpFace.transform;
         GameManager.Instance.sfxSource.clip = GameManager.Instance.ShapePopulationSound;
         GameManager.Instance.sfxSource.Play();
+        Handheld.Vibrate();
         deletePhantomObjects();
     }
 
@@ -261,7 +262,6 @@ public class ShapesManager : MonoBehaviour
         {
             currentShape.isAboutToPopulated = false;
             currentShape = null;
-            Handheld.Vibrate();
             OnShapePopualationEnd.Invoke();
             rubixCube.OnPatternFillEnd.Invoke();
         }
@@ -348,7 +348,7 @@ public class ShapesManager : MonoBehaviour
     {
         foreach (var obj in phantomObjects)
         {
-            obj.transform.localScale =(Vector3.one - Vector3.up * 0.8f);
+            obj.transform.localScale = (Vector3.one - Vector3.up * 0.8f);
             obj.transform.DOKill();
             obj.GetComponent<MeshRenderer>().material.DOKill();
         }
