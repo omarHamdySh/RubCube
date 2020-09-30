@@ -48,6 +48,9 @@ public class SceneHandller : MonoBehaviour
         LoadLevel(SceneManager.GetActiveScene().buildIndex);
     }
 
+
+
+
     /// <summary>
     /// Load Next Level in build setting with loading
     /// </summary>

@@ -4,16 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Ground
-  - JumpBoost
-  - dummy
-  - Wall
-  - EndWall
-  - EndLine
-  - TreasureBox
-  - UncollectedPlayer
-  - Shape
   - Target
+  - Shape
   layers:
   - Default
   - TransparentFX
@@ -23,8 +15,8 @@ TagManager:
   - UI
   - 
   - 
+  - FaceBlock
   - Face
-  - CubeBlock
   - 
   - 
   - 

@@ -348,10 +348,9 @@ public class ShapesManager : MonoBehaviour
     {
         foreach (var obj in phantomObjects)
         {
-            obj.transform.SetGlobalScale(Vector3.one - Vector3.up * 0.8f);
+            obj.transform.localScale =(Vector3.one - Vector3.up * 0.8f);
             obj.transform.DOKill();
             obj.GetComponent<MeshRenderer>().material.DOKill();
-
         }
     }
 

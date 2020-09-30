@@ -18,4 +18,16 @@ public class MainMenuUIHandller : SceneHandller
     {
         LoadLevel(currentLevelIndex, loading);
     }
+
+    public void restartAfter(int delay)
+    {
+        StartCoroutine(restart(delay));
+    }
+
+    IEnumerator restart(int delay)
+    {
+
+        yield return new WaitForSeconds(delay);
+        RestartLevel();
+    }
 }

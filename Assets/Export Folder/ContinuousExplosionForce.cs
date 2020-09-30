@@ -36,11 +36,11 @@ public class ContinuousExplosionForce : MonoBehaviour
 	{
 		for (int i = 0; i < 20; i++)
 		{
-			foreach (Collider col in Physics.OverlapSphere (G.transform.position, radius))
+			foreach (Collider col in Physics.OverlapSphere (transform.position, radius))
 			{
 				if (col.GetComponent<Rigidbody> () != null)
 				{
-					col.GetComponent<Rigidbody> ().AddExplosionForce (force + i + 1, G.transform.position, radius, upwardsModifier, forceMode);
+					col.GetComponent<Rigidbody> ().AddExplosionForce (force + i + 1, transform.position, radius, upwardsModifier, forceMode);
 				}
 			}
 			yield return new WaitForFixedUpdate ();

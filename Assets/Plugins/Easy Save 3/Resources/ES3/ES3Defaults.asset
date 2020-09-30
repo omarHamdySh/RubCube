@@ -29,27 +29,8 @@ MonoBehaviour:
     referenceMode: 2
     serializationDepthLimit: 64
     assemblyNames:
-    - SA.Android
-    - StansAssets.Foundation
-    - SA.iOS
     - Assembly-CSharp-firstpass
-    - SA.CrossPlatform
     - Assembly-CSharp
-    - Cinemachine
-    - SA.Foundation
-    - SA.Facebook
-    - SA.iOS.XCode
-    - SA.Android.Manifest
-    - SA.Foundation.Network
-    - SA.Facebook.Editor
-    - SA.Android.Editor
-    - SA.Foundation.ThirdParty.Editor
-    - SA.iOS.Editor
-    - SA.Foundation.Editor
-    - SA.CrossPlatform.Editor
-    - StansAssets.Foundation.Editor
-    - SA.Android.Manifest.Editor
-    - SA.iOS.XCode.Editor
     showAdvancedSettings: 0
   addMgrToSceneAutomatically: 0
   autoUpdateReferences: 1
