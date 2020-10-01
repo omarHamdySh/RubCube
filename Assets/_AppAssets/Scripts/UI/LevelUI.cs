@@ -122,6 +122,12 @@ public class LevelUI : SceneHandller
 
     public void OpenWinCanvas()
     {
+        // Set the next level index to the current
+        int nextLevelIndex = (SceneManager.GetActiveScene().buildIndex + 1) % SceneManager.sceneCountInBuildSettings;
+        nextLevelIndex = nextLevelIndex == 0 ? nextLevelIndex + 1 : nextLevelIndex;
+        PlayerPrefs.SetInt(ImportantData.CurrentLevel, nextLevelIndex);
+
+        // Open UI
         isUIOpen = true;
         winCanvas.enabled = true;
         ZUIManager.Instance.OpenMenu(winCanvas.transform.GetChild(0).name);
