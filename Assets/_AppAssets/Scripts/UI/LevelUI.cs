@@ -31,6 +31,8 @@ public class LevelUI : SceneHandller
     private void Start()
     {
         FB_EventsHandler.instance.LogLevelStartedEvent(SceneManager.GetActiveScene().buildIndex + 1);
+        int score = PlayerPrefs.GetInt(ImportantData.Score, 0);
+        SetScoreText(score);
     }
 
     public void ToggleISUIOpen(bool enabeld)
@@ -101,13 +103,15 @@ public class LevelUI : SceneHandller
 
     public void SetScoreText(int score)
     {
+        PlayerPrefs.SetInt(ImportantData.Score, score);
         scoreTxt.text = "Score\n" + score;
+
     }
 
     public void SetBestScoreText(int bestScore)
     {
         bestScoreTxt.text = "Best Score\n" + bestScore;
-        PlayerPrefs.SetInt(ImportantData.LevelScore + SceneManager.GetActiveScene().buildIndex, bestScore);
+        //PlayerPrefs.SetInt(ImportantData.LevelScore + SceneManager.GetActiveScene().buildIndex, bestScore);
     }
 
     public void OnTimerStoped()
