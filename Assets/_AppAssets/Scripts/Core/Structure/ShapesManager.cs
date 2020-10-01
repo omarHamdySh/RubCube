@@ -54,6 +54,7 @@ public class ShapesManager : MonoBehaviour
             shapes.Add(shape);
             shape.patternTypeGrid = facePatternType;
             shape.Init();
+            shape.ApplyShapePrefab(rubixCube.faceBlocksPrefabs[rubixCube.facePatternsTypes.IndexOf(facePatternType)]);
             shape.hideRows();
         }
     }

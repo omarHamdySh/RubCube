@@ -23,6 +23,7 @@ public class RubixCube : MonoBehaviour
 
     #region  Public Data Memebers
 
+    [Header("Rubix Cube DataMembers")]
     public List<Face> faces;
     public GameObject core;
     public UnityEvent OnCubeTwist;
@@ -36,6 +37,11 @@ public class RubixCube : MonoBehaviour
 
     public List<Array2DBool> allPatternsTypes;
     public List<Array2DBool> facePatternsTypes;
+
+    [Header("StylizedPrefabs")]
+    public GameObject borderObjectPrefab;
+    public List<GameObject> faceBlocksPrefabs;
+
     #endregion
 
     #region  Private Data Memebers
@@ -54,12 +60,134 @@ public class RubixCube : MonoBehaviour
 
     #region Public Methods
 
+    [ContextMenu("Apply All Prefabs and Re-Initialize")]
+    public void ApplyAllPrefabsAndReInitializa()
+    {
+        ApplyAllPrefabs();
+        Init();
+    }
+
+
     [ContextMenu("Initialize Cube")]
     public void Init()
     {
+        reset();
         //RandomizePatterns();
         InitiFaces();
         shapesManager.Init();
+    }
+
+    [ContextMenu("Apply All Prefabs")]
+    public void ApplyAllPrefabs()
+    {
+        ApplyFacesPrefabs();
+        ApplyBordersPrefabs();
+    }
+
+    [ContextMenu("Apply Faces Prefabs")]
+    public void ApplyFacesPrefabs()
+    {
+        for (int i = 0; i < faces.Count; i++)
+        {
+            foreach (var row in faces[i].rows)
+            {
+                foreach (var blockContainer in row.faceBlockContainers)
+                {
+                    if (blockContainer.gameObject.activeInHierarchy)
+                    {
+                        deleteAllChildrenOfFaceBlock(blockContainer);
+                        Instantiate(faceBlocksPrefabs[i], blockContainer.faceBlock.transform);
+                    }
+                }
+
+            }
+        }
+    }
+
+
+    [ContextMenu("Apply Border Prefabs")]
+    public void ApplyBordersPrefabs()
+    {
+        FaceBlockContainer[] containers = GetComponentsInChildren<FaceBlockContainer>();
+
+        foreach (var container in containers)
+        {
+            if (!container.isPatternBased)
+            {
+                deleteAllChildrenOfFaceBlock(container);
+
+                Instantiate(borderObjectPrefab, container.faceBlock.transform);
+            }
+        }
+
+        for (int i = 0; i < faces.Count; i++)
+        {
+            FaceBlocksRow[] rows = faces[i].GetComponentsInChildren<FaceBlocksRow>();
+           
+            foreach (var row in rows)
+            {
+                FaceBlockContainer[] rowContainers = row.GetComponentsInChildren<FaceBlockContainer>();
+
+                foreach (var blockContainer in rowContainers)
+                {
+                    if (!row.isPatternBased)
+                    {
+                        deleteAllChildrenOfFaceBlock(blockContainer);
+
+                        Instantiate(borderObjectPrefab, blockContainer.faceBlock.transform);
+                    }
+                }
+            }
+        }
+    }
+
+
+    [ContextMenu("Delete Border Prefabs")]
+    public void deleteAllBorderPrefabs()
+    {
+        FaceBlockContainer[] containers = GetComponentsInChildren<FaceBlockContainer>();
+
+        foreach (var container in containers)
+        {
+            if (!container.isPatternBased)
+            {
+                deleteAllChildrenOfFaceBlock(container);
+            }
+        }
+
+        for (int i = 0; i < faces.Count; i++)
+        {
+            FaceBlocksRow[] rows = faces[i].GetComponentsInChildren<FaceBlocksRow>();
+
+            foreach (var row in rows)
+            {
+                FaceBlockContainer[] rowContainers = row.GetComponentsInChildren<FaceBlockContainer>();
+
+                foreach (var blockContainer in rowContainers)
+                {
+                    if (!blockContainer.gameObject.activeInHierarchy)
+                    {
+                        deleteAllChildrenOfFaceBlock(blockContainer);
+
+                        Instantiate(borderObjectPrefab, blockContainer.faceBlock.transform);
+                    }
+                }
+            }
+        }
+    }
+
+    private static void deleteAllChildrenOfFaceBlock(FaceBlockContainer container)
+    {
+        for (int i = 0; i < container.faceBlock.transform.childCount; i++)
+        {
+
+#if UNITY_EDITOR
+            DestroyImmediate(container.faceBlock.transform.GetChild(i).gameObject);
+#else
+                                    Destroy(obj);
+#endif
+
+        }
     }
 
     public void RandomizePatterns()
@@ -126,7 +254,7 @@ public class RubixCube : MonoBehaviour
             this.transform.DORotate(transform.rotation.eulerAngles + Vector3.forward * -90, rotateDuration, RotateMode.FastBeyond360).OnComplete(OnTwistComplete).SetEase(Ease.Linear);
         }
     }
-    
+
     #endregion
 
     public void OnTwistComplete()
@@ -140,7 +268,7 @@ public class RubixCube : MonoBehaviour
         OnCubeTwist.Invoke();
     }
 
-    [ContextMenu("Init Prefab")]
+    //[ContextMenu("Init Prefab")]
     public void prefabInit()
     {
         Face[] fetchedFaces = GetComponentsInChildren<Face>();

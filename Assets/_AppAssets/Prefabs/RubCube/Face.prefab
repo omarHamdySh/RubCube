@@ -52,12 +52,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parentCube: {fileID: 0}
   faceDirection: 0
-  patternType: 1
+  patternTypeGrid: {fileID: 0}
   faceCollider: {fileID: 8158166348898969733}
+  isPopulated: 0
   rows:
   - {fileID: 740602487278893258}
   - {fileID: 9140945109272527817}
   - {fileID: 4908625307356164915}
+  indicatorsPrefabsObjects: []
 --- !u!65 &8158166348898969733
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -317,6 +319,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6870136420119691676, guid: dfc05ed5f9229fb46b74ee01c6288f07,
+        type: 3}
+      propertyPath: isPatternBased
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7728889885667883186, guid: dfc05ed5f9229fb46b74ee01c6288f07,
         type: 3}
       propertyPath: m_Name
@@ -558,6 +565,11 @@ PrefabInstance:
     - target: {fileID: 5576653679469596023, guid: dfc05ed5f9229fb46b74ee01c6288f07,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6870136420119691676, guid: dfc05ed5f9229fb46b74ee01c6288f07,
+        type: 3}
+      propertyPath: isPatternBased
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7728889885667883186, guid: dfc05ed5f9229fb46b74ee01c6288f07,

@@ -46,5 +46,32 @@ public class Shape : Face
         }
     }
 
+    public void ApplyShapePrefab(GameObject prefab) {
+
+        foreach (var row in rows)
+        {
+            foreach (var container in row.faceBlockContainers)
+            {
+                deleteAllChildrenOfFaceBlock(container);
+                Instantiate(prefab, container.faceBlock.transform);
+            }
+        }
+    }
+
+
+    private static void deleteAllChildrenOfFaceBlock(FaceBlockContainer container)
+    {
+        for (int i = 0; i < container.faceBlock.transform.childCount; i++)
+        {
+
+#if UNITY_EDITOR
+            DestroyImmediate(container.faceBlock.transform.GetChild(i).gameObject);
+#else
+                                    Destroy(obj);
+#endif
+
+        }
+    }
+
 
 }
