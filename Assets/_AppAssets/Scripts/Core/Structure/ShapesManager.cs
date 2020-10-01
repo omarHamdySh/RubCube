@@ -21,6 +21,8 @@ public class ShapesManager : MonoBehaviour
     [SerializeField] bool isAIControlled;
     List<GameObject> phantomObjects = new List<GameObject>();
 
+    public UnityEvent OnStartEvaluation;
+    public UnityEvent OnPopulationAnimationKill;
     public UnityEvent OnShapeMatch;
     public UnityEvent OnDoesntMatch;
     public UnityEvent OnRotationDoesntMatch;
@@ -29,6 +31,7 @@ public class ShapesManager : MonoBehaviour
 
     public UnityEvent OnCurrentFaceIsPopulated;
     public UnityEvent OnCurrentFaceIsUnPopulated;
+    private bool isPopulating;
 
     private void Start()
     {
@@ -109,6 +112,7 @@ public class ShapesManager : MonoBehaviour
 
         if (currentShape != null)
         {
+            OnStartEvaluation.Invoke();
             if (rubixCube.currentUpFace.patternTypeGrid == currentShape.patternTypeGrid)
             {
                 if (rubixCube.currentUpFace.isPopulated)
@@ -157,12 +161,16 @@ public class ShapesManager : MonoBehaviour
                 else
                 {
                     OnRotationDoesntMatch.Invoke();
+                    if (!isPopulating)
+                        OnPopulationAnimationKill.Invoke();
                 }
 
             }
             else
             {
                 OnDoesntMatch.Invoke();
+                if (!isPopulating)
+                    OnPopulationAnimationKill.Invoke();
             }
         }
     }
@@ -247,7 +255,8 @@ public class ShapesManager : MonoBehaviour
 
     public void populateCurrentShape()
     {
-        currentShape.transform.DOMove(rubixCube.currentUpFace.transform.position, populationAnimationDuration).SetEase(populationAnimationEaseType).OnComplete(OnPopulationAnimationEnd);
+        isPopulating = true;
+        currentShape.transform.DOMove(rubixCube.currentUpFace.transform.position, populationAnimationDuration).SetEase(populationAnimationEaseType).OnComplete(OnPopulationAnimationEnd).OnKill(OnKilled);
         currentShape.isAboutToPopulated = true;
         currentShape.transform.parent = rubixCube.currentUpFace.transform;
         GameManager.Instance.sfxSource.clip = GameManager.Instance.ShapePopulationSound;
@@ -256,15 +265,26 @@ public class ShapesManager : MonoBehaviour
         deletePhantomObjects();
     }
 
-    public void OnPopulationAnimationEnd()
+    public void OnKilled()
     {
+        isPopulating = false;
+        OnPopulationAnimationKill.Invoke();
         if (currentShape.isAboutToPopulated)
         {
             currentShape.isAboutToPopulated = false;
+            currentShape.transform.position = rubixCube.currentUpFace.transform.position;
             currentShape = null;
             OnShapePopualationEnd.Invoke();
             rubixCube.OnPatternFillEnd.Invoke();
         }
+    }
+    public void OnPopulationAnimationEnd()
+    {
+        //if (currentShape.isAboutToPopulated)
+        //{
+        //    currentShape.isAboutToPopulated = false;
+
+        //}
 
     }
 

@@ -30,7 +30,7 @@ public class LevelUI : SceneHandller
 
     private void Start()
     {
-
+        FB_EventsHandler.instance.LogLevelStartedEvent(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void ToggleISUIOpen(bool enabeld)

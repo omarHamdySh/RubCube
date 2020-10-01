@@ -19,6 +19,7 @@ public class SwipeControl : MonoBehaviour
     [SerializeField] private float rotateTime = 3.0f;
     [SerializeField] private float rotateDegrees = 90.0f;
     [SerializeField] private bool rotating = false;
+    [SerializeField] private bool isShapeMoving = false;
     [SerializeField] UnityEvent OnRotationEnd;
 
     [SerializeField] UnityEvent OnSwipeRightFaceUpEnd;
@@ -82,7 +83,7 @@ public class SwipeControl : MonoBehaviour
 
     private void OnSwipe(EasyGesture.Gesture type, float speed)
     {
-        if (rotating)
+        if (rotating || isShapeMoving)
         {
             return;
         }
@@ -207,5 +208,15 @@ public class SwipeControl : MonoBehaviour
         this.freezeSwipeLeftFaceUP = true;
         this.freezeSwipeRight = true;
         this.freezeSwipeLeft = true;
+    }
+
+    public void declareIsShapeMoving()
+    {
+        isShapeMoving = true;
+    }
+
+    public void declareIsShapeNotMoving()
+    {
+        isShapeMoving = false;
     }
 }
