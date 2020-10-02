@@ -143,37 +143,14 @@ public class RubixCube : MonoBehaviour
     }
 
 
-    [ContextMenu("Delete Border Prefabs")]
+    [ContextMenu("Delete Blocks Prefabs")]
     public void deleteAllBorderPrefabs()
     {
         FaceBlockContainer[] containers = GetComponentsInChildren<FaceBlockContainer>();
 
         foreach (var container in containers)
         {
-            if (!container.isPatternBased)
-            {
                 deleteAllChildrenOfFaceBlock(container);
-            }
-        }
-
-        for (int i = 0; i < faces.Count; i++)
-        {
-            FaceBlocksRow[] rows = faces[i].GetComponentsInChildren<FaceBlocksRow>();
-
-            foreach (var row in rows)
-            {
-                FaceBlockContainer[] rowContainers = row.GetComponentsInChildren<FaceBlockContainer>();
-
-                foreach (var blockContainer in rowContainers)
-                {
-                    if (!blockContainer.gameObject.activeInHierarchy)
-                    {
-                        deleteAllChildrenOfFaceBlock(blockContainer);
-                        if (blockContainer.faceBlock.transform.childCount == 0)
-                            Instantiate(borderObjectPrefab, blockContainer.faceBlock.transform);
-                    }
-                }
-            }
         }
     }
 
