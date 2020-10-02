@@ -96,7 +96,8 @@ public class RubixCube : MonoBehaviour
                     if (blockContainer.gameObject.activeInHierarchy)
                     {
                         deleteAllChildrenOfFaceBlock(blockContainer);
-                        Instantiate(faceBlocksPrefabs[i], blockContainer.faceBlock.transform);
+                        if (blockContainer.faceBlock.transform.childCount == 0)
+                            Instantiate(faceBlocksPrefabs[i], blockContainer.faceBlock.transform);
                     }
                 }
 
@@ -123,7 +124,7 @@ public class RubixCube : MonoBehaviour
         for (int i = 0; i < faces.Count; i++)
         {
             FaceBlocksRow[] rows = faces[i].GetComponentsInChildren<FaceBlocksRow>();
-           
+
             foreach (var row in rows)
             {
                 FaceBlockContainer[] rowContainers = row.GetComponentsInChildren<FaceBlockContainer>();
@@ -133,8 +134,8 @@ public class RubixCube : MonoBehaviour
                     if (!row.isPatternBased)
                     {
                         deleteAllChildrenOfFaceBlock(blockContainer);
-
-                        Instantiate(borderObjectPrefab, blockContainer.faceBlock.transform);
+                        if (blockContainer.faceBlock.transform.childCount == 0)
+                            Instantiate(borderObjectPrefab, blockContainer.faceBlock.transform);
                     }
                 }
             }
@@ -168,8 +169,8 @@ public class RubixCube : MonoBehaviour
                     if (!blockContainer.gameObject.activeInHierarchy)
                     {
                         deleteAllChildrenOfFaceBlock(blockContainer);
-
-                        Instantiate(borderObjectPrefab, blockContainer.faceBlock.transform);
+                        if (blockContainer.faceBlock.transform.childCount == 0)
+                            Instantiate(borderObjectPrefab, blockContainer.faceBlock.transform);
                     }
                 }
             }
